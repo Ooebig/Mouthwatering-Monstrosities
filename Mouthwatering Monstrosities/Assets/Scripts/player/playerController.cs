@@ -11,9 +11,11 @@ public class playerController : MonoBehaviour, IDamage
     [Header("Build")]
     [SerializeField] public CharacterController controller;
     [SerializeField] GameObject playerModel;
+    [SerializeField] GameObject bladeZone;
+    [SerializeField] GameObject bluntZone;
     [SerializeField] Transform shootPos;
-    [SerializeField] Transform gunPivot;
-    [SerializeField] Renderer gunModel;
+    [SerializeField] Transform weaponPivot;
+    [SerializeField] Renderer weaponModel;
     [SerializeField] public int team = 0;
     public int Team => team;
 
@@ -83,9 +85,36 @@ public class playerController : MonoBehaviour, IDamage
         
         if (Input.GetButton("Fire1") && weaponList.Length > 0 && attackTimer >= weaponList[activeWeaponNum].attackSpeed)
         {
-            //attack();
+            attack();
         }
         selectWeapon();
+    }
+
+    void attack()
+    {
+        if (activeWeaponNum == 0)
+        {
+            bladeZone.SetActive(true);
+            StartCoroutine(disableAttackZone(bladeZone));
+        }
+        else if (activeWeaponNum == 1)
+        {
+            bluntZone.SetActive(true);
+            StartCoroutine(disableAttackZone(bluntZone));
+        }
+        else if (activeWeaponNum == 2)
+        {
+            GameObject bullet = Instantiate(activeWeapon.projectile, shootPos.position, shootPos.rotation);
+            bullet.GetComponent<damage>().damageAmount = activeWeapon.damage;
+            bullet.GetComponent<damage>().team = team;
+        }
+        attackTimer = 0;
+    }
+
+    IEnumerator disableAttackZone(GameObject zone)
+    {
+        yield return new WaitForSeconds(0.1f);
+        zone.SetActive(false);
     }
 
     void sprint()
@@ -116,7 +145,7 @@ public class playerController : MonoBehaviour, IDamage
                 activeWeaponNum = i;
 
             }
-            
+            //weaponModel = activeWeapon.model;
             attackRate = activeWeapon.attackSpeed;
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
@@ -130,7 +159,7 @@ public class playerController : MonoBehaviour, IDamage
                 activeWeaponNum = i;
 
             }
-
+            //weaponModel = activeWeapon.model;
             attackRate = activeWeapon.attackSpeed;
         }
     }

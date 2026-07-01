@@ -10,7 +10,9 @@ public class weapon : ScriptableObject
     [SerializeField] public float damage;
     [SerializeField] public float range;
     [SerializeField] public float attackSpeed;
+    [SerializeField] public Renderer model;
     [SerializeField] public GameObject projectile;
+    
 
 
 }

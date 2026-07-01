@@ -16,4 +16,5 @@ MonoBehaviour:
   damage: 15
   range: 0
   attackSpeed: 0.75
-  projectile: {fileID: 0}
+  model: {fileID: 0}
+  projectile: {fileID: 5542346154053770592, guid: c9623cf33c108434fb3d4164f6b0a32e, type: 3}

@@ -2,21 +2,26 @@ using UnityEngine;
 
 public class damage : MonoBehaviour
 {
-    enum Type { Projectile, Melee }
-    [SerializeField] Type type;
-    [SerializeField] int team;
-    [SerializeField] float damageAmount;
+    public enum Type { Projectile, Melee }
+    [SerializeField] public Type type;
+    [SerializeField] public int team;
+    [SerializeField] public float damageAmount;
 
-    [SerializeField] Rigidbody rb;
-    [SerializeField] float bulletSpeed;
-    [SerializeField] int bulletDestroyTime;
+    [SerializeField] public Rigidbody rb;
+    [SerializeField] public float bulletSpeed;
+    [SerializeField] public int bulletDestroyTime;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb.linearVelocity = transform.forward * bulletSpeed;
-        //Destroy(gameObject, bulletDestroyTime);
+        
+        if  (type == Type.Projectile)
+        {
+            rb.linearVelocity = transform.forward * bulletSpeed;
+            Destroy(gameObject, bulletDestroyTime);
+        }
+        
     }
 
     // Update is called once per frame
