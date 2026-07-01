@@ -1,43 +1,31 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class door : MonoBehaviour
 {
     [SerializeField] GameObject doorModel;
-    [SerializeField] GameObject doorButton;
-    [SerializeField] public bool Locked = false;
+    [SerializeField] GameObject doorButtons;
 
-    bool inTrigger = false;
+    bool playerInTrigger;
 
-    public bool hasKey = false;
-
-    private void Start()
+    // Update is called once per frame
+    void Update()
     {
-        doorButton.transform.rotation = Quaternion.Euler(0, 0, 0);
-
+        if(playerInTrigger)
+        {
+            if(Input.GetButtonDown("Interact"))
+            {
+                doorModel.SetActive(false);
+                doorButtons.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !Locked)
+        if(other.CompareTag("Player"))
         {
-            doorModel.SetActive(false);
-        }
-        else if(other.CompareTag("Player") && hasKey)
-        {
-            doorButton.SetActive(true);
-        }
-        inTrigger = true;
-    }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown("Interact") && hasKey && inTrigger)
-        {
-
-            UnlockDoor();
-            doorModel.SetActive(false);
-            doorButton.SetActive(false);
-            hasKey = false;
+            playerInTrigger = true;
+            doorButtons.SetActive(true);
         }
     }
 
@@ -45,19 +33,9 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            playerInTrigger = false;
             doorModel.SetActive(true);
-            doorButton.SetActive(false);
+            doorButtons.SetActive(false);
         }
     }
-
-    public void UnlockDoor()
-    {
-        Locked = false;
-    }
-
-    public void LockDoor()
-    {
-        Locked = true;
-    }
-
 }
