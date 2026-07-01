@@ -16,7 +16,7 @@ public class damage : MonoBehaviour
     void Start()
     {
         rb.linearVelocity = transform.forward * bulletSpeed;
-        Destroy(gameObject, bulletDestroyTime);
+        //Destroy(gameObject, bulletDestroyTime);
     }
 
     // Update is called once per frame
