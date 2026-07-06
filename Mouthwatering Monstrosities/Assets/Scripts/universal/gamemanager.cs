@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 public class gamemanager : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuClear;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuSkillTree;
     [SerializeField] Image roomProgressBar;
     [SerializeField] int roomGoalMax;
     public int roomGoalCount;
@@ -56,6 +56,23 @@ public class gamemanager : MonoBehaviour
             else if (menuActive == menuPause)
             {
                 stateUnpause();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (menuActive == null)
+            {
+                statePause();
+                menuActive = menuSkillTree;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                menuActive.SetActive(true);
+            }
+            else if (menuActive == menuSkillTree)
+            {
+                stateUnpause();
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
