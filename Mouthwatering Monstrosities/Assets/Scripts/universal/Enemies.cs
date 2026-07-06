@@ -53,7 +53,7 @@ public class Enemies : MonoBehaviour, IDamage
     {
         damageTimer += Time.deltaTime;
         agent.SetDestination(gamemanager.instance.player.transform.position);
-        agent.stoppingDistance = attackRange;
+        agent.stoppingDistance = 1;
 
         float distance = Vector3.Distance(transform.position, gamemanager.instance.player.transform.position);
         faceTarget();
