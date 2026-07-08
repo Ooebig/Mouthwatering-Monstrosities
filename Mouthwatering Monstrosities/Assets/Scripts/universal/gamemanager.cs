@@ -50,6 +50,8 @@ public class gamemanager : MonoBehaviour
             {
                 statePause();
                 menuActive = menuPause;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 menuActive.SetActive(true);
             }
 
