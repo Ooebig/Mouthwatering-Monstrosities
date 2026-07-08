@@ -55,4 +55,11 @@ public class SkillTreeButtonFunctions : MonoBehaviour
         upgrade.GetComponent<AvailableNeighbor>().Unlock();
     }
 
+    public void Unpause()
+    {
+
+        gamemanager.instance.stateUnpause();
+
+    }
+
 }
