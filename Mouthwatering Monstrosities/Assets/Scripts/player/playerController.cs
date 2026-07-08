@@ -83,7 +83,7 @@ public class playerController : MonoBehaviour, IDamage
 
 
         
-        if (Input.GetButton("Fire1") && weaponList.Length > 0 && attackTimer >= weaponList[activeWeaponNum].attackSpeed)
+        if (Input.GetButton("Fire1") && weaponList.Length > 0 && attackTimer >= weaponList[activeWeaponNum].attackSpeed && gamemanager.instance.isPaused == false)
         {
             attack();
         }
