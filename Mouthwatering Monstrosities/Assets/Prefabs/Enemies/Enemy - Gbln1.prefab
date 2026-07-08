@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 4030827117224737122}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: 0, w: 0.0000005960464}
-  m_LocalPosition: {x: 0.5100059, y: 0.10678665, z: 0.8335364}
+  m_LocalPosition: {x: -0.47, y: 0.10678665, z: 1.26}
   m_LocalScale: {x: 0.2, y: 0.26666668, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 1
   team: 1
-  damageAmount: 10
+  damageAmount: 5
   rb: {fileID: 7608554602789334952}
   bulletSpeed: 0
   bulletDestroyTime: 0
@@ -521,12 +521,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemies
   model: {fileID: 9149136943174743762}
   agent: {fileID: -5493892446865635466}
-  HP: 10
+  HP: 25
   faceTargetSpeed: 0
   FOV: 0
   roamDist: 0
   roamDelay: 0
-  attackRange: 3
+  attackRange: 5
   attackDuration: 0.25
   type: 0
   damageRate: 0.75

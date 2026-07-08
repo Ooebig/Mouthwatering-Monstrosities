@@ -24,6 +24,7 @@ public class Enemies : MonoBehaviour, IDamage
     [Header("Weapon")]
     [SerializeField] float damageRate;
     [SerializeField] Collider weaponCollider;
+    [SerializeField] Spawner spawner;
 
 
     Color colorOrig;
@@ -32,10 +33,9 @@ public class Enemies : MonoBehaviour, IDamage
     Vector3 startingPos;
 
     bool playerInTrigger;
-
     float damageTimer;
-
     float stoppingDistOrig;
+    
 
     int IDamage.Team => 1;
 
@@ -53,7 +53,7 @@ public class Enemies : MonoBehaviour, IDamage
     {
         damageTimer += Time.deltaTime;
         agent.SetDestination(gamemanager.instance.player.transform.position);
-        agent.stoppingDistance = 1;
+        agent.stoppingDistance = 2;
 
         float distance = Vector3.Distance(transform.position, gamemanager.instance.player.transform.position);
         faceTarget();
@@ -107,8 +107,7 @@ public class Enemies : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            //gamemanager.instance.updateGameGoal(-1);
-            Destroy(gameObject);
+            KillEnemy();
         }
         else
         {
@@ -132,5 +131,11 @@ public class Enemies : MonoBehaviour, IDamage
 
         weaponCollider.enabled = false;
         agent.isStopped = false;
+    }
+
+    public void KillEnemy()
+    {
+        spawner.DecrementCount();
+        Destroy(gameObject);
     }
 }
