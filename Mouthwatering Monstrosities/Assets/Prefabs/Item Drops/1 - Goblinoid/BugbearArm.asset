@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BugbearArm
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
   dropModel: {fileID: 693499632968240319, guid: e9039e5f78b472e438e1c4a203d45d92, type: 3}
-  dropChance: 0
+  dropChance: 100
   itemName: Bugbear Arm

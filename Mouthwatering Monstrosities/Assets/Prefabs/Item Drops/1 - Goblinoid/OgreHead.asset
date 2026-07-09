@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OgreHead
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
   dropModel: {fileID: 6250537738140844574, guid: fc2cf224d9dcfe44ea29feb9d4c1b1d1, type: 3}
-  dropChance: 0
+  dropChance: 50
   itemName: Ogre Head

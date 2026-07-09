@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OrcJowl
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
   dropModel: {fileID: 1469116044188708899, guid: 53b25c94fcf414442812ea9807fabf52, type: 3}
-  dropChance: 0
+  dropChance: 50
   itemName: Orc Jowl
