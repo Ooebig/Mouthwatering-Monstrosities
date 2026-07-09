@@ -108,7 +108,7 @@ public class Enemies : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             //gamemanager.instance.updateGameGoal(-1);
-            Destroy(gameObject);
+            Die();
         }
         else
         {
@@ -132,5 +132,10 @@ public class Enemies : MonoBehaviour, IDamage
 
         weaponCollider.enabled = false;
         agent.isStopped = false;
+    }
+
+    void Die() {
+        GetComponent<LootBag>().InstantiateDrops(transform.position);
+        Destroy(gameObject);
     }
 }
