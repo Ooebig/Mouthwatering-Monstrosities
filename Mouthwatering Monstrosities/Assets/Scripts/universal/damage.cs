@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class damage : MonoBehaviour
@@ -44,7 +45,7 @@ public class damage : MonoBehaviour
         {
             hit = true;
         }
-        if (hit && type == Type.Projectile)
+        if (hit && type == Type.Projectile && other.gameObject.layer != 3)
         {
             Destroy(gameObject);
         }

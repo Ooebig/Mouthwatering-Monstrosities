@@ -15,6 +15,7 @@ public class InventoryItem
     }
 
     public void AddToStack(int addition = 1) {
+        if(stackSize != 999)
         stackSize = stackSize + addition;
     }
     public void RemoveFromStack(int removal = 1) {
