@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949407684634ee540babe80e8d014218, type: 3}
   m_Name: GremlinLeg
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
-  dropModel: {fileID: 693499632968240319, guid: e9039e5f78b472e438e1c4a203d45d92, type: 3}
-  dropChance: 0
+  dropModel: {fileID: 693499632968240319, guid: 75a5b47ce636cf2499f69928aa63724c, type: 3}
+  dropChance: 100
   itemName: Gremlin Leg

@@ -5,10 +5,10 @@ using System;
 
 public class InventoryItem
 {
-    public itemDrops itemData;
+    public ItemDrops itemData;
     public int stackSize;
 
-    public InventoryItem(itemDrops item)
+    public InventoryItem(ItemDrops item)
     {
         itemData = item;
         AddToStack();
