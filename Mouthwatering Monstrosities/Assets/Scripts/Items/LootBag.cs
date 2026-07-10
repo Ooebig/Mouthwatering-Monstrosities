@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 public class LootBag : MonoBehaviour
 {
-    public List<itemDrops> dropsList = new List<itemDrops>();
+    public List<ItemDrops> dropsList = new List<ItemDrops>();
 
-    List<itemDrops> GetDroppedItems() {
+    List<ItemDrops> GetDroppedItems() {
         int randomNumber = Random.Range(1, 101);
-        List<itemDrops> possibleDrops = new List<itemDrops>();
-        foreach (itemDrops droppedItem in dropsList)
+        List<ItemDrops> possibleDrops = new List<ItemDrops>();
+        foreach (ItemDrops droppedItem in dropsList)
         {
             if (randomNumber <= droppedItem.dropChance)
             {
@@ -22,7 +22,7 @@ public class LootBag : MonoBehaviour
     }
 
     public void InstantiateDrops(Vector3 enemyDeathPos) {
-        List<itemDrops> droppedItems = GetDroppedItems();
+        List<ItemDrops> droppedItems = GetDroppedItems();
         if (droppedItems != null)
         {
             if (droppedItems.Count == 1)
