@@ -23,6 +23,9 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField, Range(5, 50)] public float speed = 10;
     [SerializeField, Range(1.1f, 3f)] public float sprintMod = 1.5f;
     [SerializeField, Range(25f, 250f)] public float HP = 100f;
+    [SerializeField] int jumpSpeed;
+    [SerializeField] int jumpMax;
+    [SerializeField] int gravity;
     int lookSens = 30;
 
     [Header("Enabled Weapons")]
@@ -45,6 +48,7 @@ public class playerController : MonoBehaviour, IDamage
     float attackTimer;
     public float originalHP;
     bool isSprinting = false;
+    int jumpCount;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -71,18 +75,21 @@ public class playerController : MonoBehaviour, IDamage
     void movement()
     {
         attackTimer += Time.deltaTime;
-        //if (moveDir.magnitude > 0.3f && !isPlayingStep)
-        //{
-        //    StartCoroutine(playStep());
-        //}
+
+        if (controller.isGrounded)
+        {
+            jumpCount = 0;
+            playerVel.y = 0;
+        }
+
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
 
-        
+        jump();
         controller.Move(playerVel * Time.deltaTime);
 
+        playerVel.y -= gravity * Time.deltaTime;
 
-        
         if (Input.GetButton("Fire1") && weaponList.Length > 0 && attackTimer >= weaponList[activeWeaponNum].attackSpeed && gamemanager.instance.isPaused == false)
         {
             attack();
@@ -117,6 +124,14 @@ public class playerController : MonoBehaviour, IDamage
         zone.SetActive(false);
     }
 
+    void jump()
+    {
+        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
+        {
+            jumpCount++;
+            playerVel.y = jumpSpeed;
+        }
+    }
     void sprint()
     {
         if (Input.GetButtonDown("Sprint"))
