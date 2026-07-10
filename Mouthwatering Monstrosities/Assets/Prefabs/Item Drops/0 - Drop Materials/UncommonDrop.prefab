@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5451056970065959633}
   - component: {fileID: 7593760054050270635}
   - component: {fileID: 6390941951531455053}
+  - component: {fileID: -3585858131352502960}
   - component: {fileID: 6597893153852016881}
   m_Layer: 0
   m_Name: UncommonDrop
@@ -107,12 +108,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3585858131352502960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469116044188708899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f4f8eb5486d3a34a8758d91cf319e9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collectible
 --- !u!96 &6597893153852016881
 TrailRenderer:
   serializedVersion: 4
