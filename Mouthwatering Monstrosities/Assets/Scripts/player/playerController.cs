@@ -25,7 +25,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField, Range(25f, 250f)] public float HP = 100f;
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
-    [SerializeField] int gravity;
+    [SerializeField] public int gravity;
     int lookSens = 30;
 
     [Header("Enabled Weapons")]
@@ -49,7 +49,6 @@ public class playerController : MonoBehaviour, IDamage
     public float originalHP;
     bool isSprinting = false;
     int jumpCount;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
