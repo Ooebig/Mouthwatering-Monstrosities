@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,35 +9,31 @@ public class Spawner : MonoBehaviour
     [SerializeField] int amountToSpawn;
     [SerializeField] float spawnRate;
     [SerializeField] int spawnDist;
-    [SerializeField] ParticleSystem spawnEffect;
 
-    public int spawnCount;
     float spawnTimer;
-
+    List<GameObject> spawnList;
     bool startSpawning;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startSpawning = true;
+        spawnList = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (spawnCount == 5)
+       if (spawnList.Count >= 5)
         {
             startSpawning = false;
         }
-        else if (spawnCount <= 5)
-        {
-            startSpawning = true;
-        }
+       
+
+        spawnTimer += Time.deltaTime;
 
         if (startSpawning)
         {
-            spawnTimer += Time.deltaTime;
-
             if (spawnTimer > spawnRate)
             {
                 spawn();
@@ -46,7 +44,6 @@ public class Spawner : MonoBehaviour
     void spawn()
     {
         spawnTimer = 0;
-        spawnCount++;
 
         Vector3 randPos = Random.insideUnitSphere * spawnDist;
         randPos += transform.position;
@@ -57,16 +54,15 @@ public class Spawner : MonoBehaviour
 
         int arrPos = Random.Range(0, objectToSpawn.Length);
 
-        Instantiate(objectToSpawn[arrPos], hit.position, Quaternion.Euler(0, Random.Range(0, 360), 0));
-
-        if (spawnEffect != null)
-            Instantiate(spawnEffect, hit.position, Quaternion.identity);
+       GameObject enemy = Instantiate(objectToSpawn[arrPos], hit.position, Quaternion.Euler(0, Random.Range(0, 360), 0));
+        spawnList.Add(enemy);
     }
 
-    public void DecrementCount()
+    public void EnemyDied(GameObject enemy)
     {
-        --spawnCount;
-
-        return;
+        spawnTimer = 0;
+        startSpawning = true;
+        spawnList.Remove(enemy);
     }
+
 }

@@ -24,7 +24,6 @@ public class Enemies : MonoBehaviour, IDamage
     [Header("Weapon")]
     [SerializeField] float damageRate;
     [SerializeField] Collider weaponCollider;
-    [SerializeField] Spawner spawner;
 
 
     Color colorOrig;
@@ -32,10 +31,9 @@ public class Enemies : MonoBehaviour, IDamage
     Vector3 playerDir;
     Vector3 startingPos;
 
-    bool playerInTrigger;
     float damageTimer;
     float stoppingDistOrig;
-    
+    Spawner enemySpawner;
 
     int IDamage.Team => 1;
 
@@ -43,9 +41,8 @@ public class Enemies : MonoBehaviour, IDamage
     void Start()
     {
         colorOrig = model.material.color;
-        //gamemanager.instance.updateGameGoal(1);
         startingPos = transform.position;
-
+        enemySpawner = FindAnyObjectByType<Spawner>();
     }
 
     // Update is called once per frame
@@ -76,29 +73,6 @@ public class Enemies : MonoBehaviour, IDamage
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, faceTargetSpeed * Time.deltaTime);
     }
 
-    /* void rotateGun()
-     {
-         Quaternion rot = Quaternion.LookRotation(playerDir);
-         gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, rot, Time.deltaTime * gunRotateSpeed);
-     }
-    */
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInTrigger = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInTrigger = false;
-            agent.stoppingDistance = 0;
-        }
-    }
-
 
     public void takeDamage(float amount)
     {
@@ -107,7 +81,11 @@ public class Enemies : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            KillEnemy();
+           if (enemySpawner != null)
+            {
+                enemySpawner.EnemyDied(gameObject);
+            }
+            Destroy(gameObject);
         }
         else
         {
@@ -133,9 +111,4 @@ public class Enemies : MonoBehaviour, IDamage
         agent.isStopped = false;
     }
 
-    public void KillEnemy()
-    {
-        spawner.DecrementCount();
-        Destroy(gameObject);
-    }
 }
