@@ -19,14 +19,16 @@ public class SpiderWeb : MonoBehaviour
     {
         if (!active || !other.CompareTag("Player")) return;
         if (uses >= maxUses) return;
-        trappedPlayer = other.GetComponent<playerController>();
-        if (trappedPlayer == null) return;
+        playerController player = other.GetComponent<playerController>();
+        if (player == null) return;
+        if (player.activeWebs >= player.maxWebs) return;
+        trappedPlayer = player;
+        player.activeWebs++;
         uses++;
         escapeProgress = 0;
         active = false;
         webVisual.SetActive(false);
         trappedPlayer.speed -= speedReduction;
-
         StartCoroutine(RespawnWeb());
     }
 
@@ -44,6 +46,7 @@ public class SpiderWeb : MonoBehaviour
     private void BreakFree()
     {
         trappedPlayer.speed += speedReduction;
+        trappedPlayer.activeWebs--;
         trappedPlayer = null;
         escapeProgress = 0;
     }

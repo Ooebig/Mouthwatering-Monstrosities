@@ -1,9 +1,11 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Json;
 
 public class InventoryManager : MonoBehaviour
 {
+    
     private void OnEnable()
     {
         PlayerInventory.OnInventoryChange += DrawInventory;
@@ -14,14 +16,15 @@ public class InventoryManager : MonoBehaviour
         PlayerInventory.OnInventoryChange -= DrawInventory;
     }
 
+    [SerializeField] private int invSize;
     public GameObject slotPrefab;
-    public List<InventorySlot> inventorySlots = new List<InventorySlot>(7);
+    public List<InventorySlot> inventorySlots = new List<InventorySlot>();
 
     void resetPlayerInventory() {
         foreach (Transform childTransform in transform) {
             Destroy(childTransform.gameObject);
         }
-        inventorySlots = new List<InventorySlot>(7);
+        inventorySlots = new List<InventorySlot>(invSize);
     }
 
     void DrawInventory(List<InventoryItem> inventory)

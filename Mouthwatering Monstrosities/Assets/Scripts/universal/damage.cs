@@ -28,9 +28,11 @@ public class damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        if (other.isTrigger) return;
+
         IDamage dmg = other.GetComponent<IDamage>();
         bool hit = false;
-
         if (dmg != null && dmg.Team != team)
         {
             if (team == 1)

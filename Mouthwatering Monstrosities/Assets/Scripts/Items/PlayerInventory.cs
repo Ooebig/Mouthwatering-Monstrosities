@@ -26,7 +26,6 @@ public class PlayerInventory : MonoBehaviour
         if (playerItemDictionary.TryGetValue(itemData, out InventoryItem item))
         {
             item.AddToStack();
-            Debug.Log($"Added {item.itemData.name}, total stack is now {item.stackSize}!");
             OnInventoryChange?.Invoke(playerInv);
         }
         else
@@ -34,10 +33,8 @@ public class PlayerInventory : MonoBehaviour
             InventoryItem newItem = new InventoryItem(itemData);
             playerInv.Add(newItem);
             playerItemDictionary.Add(itemData, newItem);
-            Debug.Log($"Added {itemData.name} to the inventory for the first time!");
             OnInventoryChange?.Invoke(playerInv);
         }
-        Debug.Log("Passed through Add");
     }
 
     public void Remove(ItemDrops itemData) {
