@@ -12,6 +12,9 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuClear;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuSkillTree;
+    [SerializeField] GameObject inventoryCooking;
+    [SerializeField] GameObject recipeCooking;
+    [SerializeField] GameObject playerInv;
     [SerializeField] TMP_Text timeLimit;
     [SerializeField] float remainingTime;
     [SerializeField] Image roomProgressBar;

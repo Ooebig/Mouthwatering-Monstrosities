@@ -23,6 +23,5 @@ public class InventorySlot : MonoBehaviour
         }
         itemNameText.text = item.itemData.itemName;
         stackSizeText.text = item.stackSize.ToString();
-
     }
 }

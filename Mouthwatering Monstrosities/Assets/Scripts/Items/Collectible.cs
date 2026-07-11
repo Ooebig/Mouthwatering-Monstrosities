@@ -9,7 +9,6 @@ public class Collectible : MonoBehaviour, ICollectible
 
     public void Collect()   
     {
-        Debug.Log("You collected an item");
         Destroy(gameObject);
         OnCollected?.Invoke(itemData);
 
