@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 
 public class SkillTreeButtonFunctions : MonoBehaviour
 { 
@@ -61,5 +61,18 @@ public class SkillTreeButtonFunctions : MonoBehaviour
         gamemanager.instance.stateUnpause();
 
     }
+    public void quit()
+    {
 
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+    }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
