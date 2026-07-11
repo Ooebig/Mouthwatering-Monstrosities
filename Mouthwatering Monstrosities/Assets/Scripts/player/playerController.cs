@@ -221,4 +221,10 @@ public class playerController : MonoBehaviour, IDamage
         gamemanager.instance.playerDamageFlash.SetActive(false);
     }
 
-}
+    public void changePlayerPos()
+    {
+        controller.transform.position = gamemanager.instance.playerSpawnPos.transform.position;
+        Physics.SyncTransforms();
+    }
+
+    }

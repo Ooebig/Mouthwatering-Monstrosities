@@ -20,10 +20,11 @@ public class gamemanager : MonoBehaviour
     
     public Image playerHPBar;
     public GameObject playerDamageFlash;
-
+    public GameObject playerFallingFlash;
     public bool isPaused;
     public GameObject player;
     public playerController playerScript;
+    public GameObject playerSpawnPos;
 
     float timeScaleOrig;
 
@@ -34,6 +35,7 @@ public class gamemanager : MonoBehaviour
         instance = this;
         timeScaleOrig = Time.timeScale;
         player = GameObject.FindWithTag("Player");
+        playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
         Cursor.visible = false;
         if (player != null)
         {
