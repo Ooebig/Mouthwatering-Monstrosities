@@ -20,7 +20,7 @@ public class playerController : MonoBehaviour, IDamage
     public int Team => team;
 
     [Header("Stats")]
-    [SerializeField, Range(5, 50)] public float speed = 10;
+    [SerializeField, Range(0, 50)] public float speed = 10;
     [SerializeField, Range(1.1f, 3f)] public float sprintMod = 1.5f;
     [SerializeField, Range(25f, 250f)] public float HP = 100f;
     [SerializeField] int jumpSpeed;
