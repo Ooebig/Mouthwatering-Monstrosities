@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class gamemanager : MonoBehaviour
 {
@@ -12,12 +12,12 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuClear;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuSkillTree;
+    [SerializeField] TMP_Text timeLimit;
+    [SerializeField] float remainingTime;
     [SerializeField] Image roomProgressBar;
     [SerializeField] int roomGoalMax;
     public int roomGoalCount;
     
-
-
     public Image playerHPBar;
     public GameObject playerDamageFlash;
 
@@ -44,6 +44,8 @@ public class gamemanager : MonoBehaviour
 
     void Update()
     {
+        countdownTimer();
+
         if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == null)
@@ -117,5 +119,20 @@ public class gamemanager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
+    public void countdownTimer()
+    {
+        if (remainingTime > 0) remainingTime -= Time.deltaTime;
+        else if (remainingTime < 0)
+        {
+            remainingTime = 0;
+            statePause();
+            menuActive = menuLose;
+            menuActive.SetActive(true);
+
+        }
+        int minutes = Mathf.FloorToInt(remainingTime / 60);
+        int seconds = Mathf.FloorToInt(remainingTime % 60);
+        timeLimit.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
 
 }
