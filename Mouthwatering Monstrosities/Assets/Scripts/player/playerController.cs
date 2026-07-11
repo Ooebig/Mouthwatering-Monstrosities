@@ -49,6 +49,8 @@ public class playerController : MonoBehaviour, IDamage
     public float originalHP;
     bool isSprinting = false;
     int jumpCount;
+    public int activeWebs = 0;
+    public int maxWebs = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
