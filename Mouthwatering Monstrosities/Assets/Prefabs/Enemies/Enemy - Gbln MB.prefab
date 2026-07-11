@@ -570,7 +570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a70a6a0112ef74ebc0181e550765c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootBag
-  dropsList: []
+  dropsList:
+  - {fileID: 11400000, guid: 88818fc983df6fd4eb69a6877e500b50, type: 2}
 --- !u!1 &8962740946995495269
 GameObject:
   m_ObjectHideFlags: 0

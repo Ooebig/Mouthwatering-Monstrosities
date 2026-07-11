@@ -63,14 +63,14 @@ public class playerController : MonoBehaviour, IDamage
             activeWeapon = weaponList[i];
             activeWeaponNum = i;
         }
-        isStunned = false;
+        isStunned = false;  
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isStunned)
+       if (!isStunned)
         {
             movement();
             sprint();
@@ -95,8 +95,11 @@ public class playerController : MonoBehaviour, IDamage
 
         playerVel.y -= gravity * Time.deltaTime;
 
+        Debug.Log("About to attack Pressed");
+
         if (Input.GetButton("Fire1") && weaponList.Length > 0 && attackTimer >= weaponList[activeWeaponNum].attackSpeed && gamemanager.instance.isPaused == false)
         {
+            Debug.Log("Attack Pressed");
             attack();
         }
         selectWeapon();
@@ -104,6 +107,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void attack()
     {
+       
         if (activeWeaponNum == 0)
         {
             bladeZone.SetActive(true);

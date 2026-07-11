@@ -243,6 +243,7 @@ MonoBehaviour:
   type: 1
   team: 1
   damageAmount: 5
+  damageRate: 0
   rb: {fileID: 7608554602789334952}
   bulletSpeed: 0
   bulletDestroyTime: 0
@@ -402,6 +403,7 @@ GameObject:
   - component: {fileID: 7848271627551351263}
   - component: {fileID: -5493892446865635466}
   - component: {fileID: 6606332616009703921}
+  - component: {fileID: 8425126611090654299}
   m_Layer: 0
   m_Name: Enemy - Gbln1
   m_TagString: Untagged
@@ -577,3 +579,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8425126611090654299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8603148278238095119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a70a6a0112ef74ebc0181e550765c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootBag
+  dropsList:
+  - {fileID: 11400000, guid: 262465ebf5e0adb4ab16dfb777ab8ce3, type: 2}
