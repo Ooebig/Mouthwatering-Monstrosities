@@ -51,4 +51,5 @@ public class PlayerInventory : MonoBehaviour
             OnInventoryChange?.Invoke(playerInv);
         }
     }
+
 }

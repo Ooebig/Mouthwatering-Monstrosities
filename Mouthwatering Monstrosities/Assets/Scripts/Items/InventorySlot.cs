@@ -7,11 +7,11 @@ using TMPro;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Image icon;
-    public TextMesh stackSizeText;
+    public TMP_Text itemNameText;
+    public TMP_Text stackSizeText;
 
     public void ClearSlot() {
-        icon.SetEnabled(false);
+        itemNameText.text = string.Empty;
         stackSizeText.text = string.Empty;
     }
 
@@ -21,9 +21,7 @@ public class InventorySlot : MonoBehaviour
             ClearSlot();
             return;
         }
-        icon.SetEnabled(true);
-        stackSizeText.text = string.Empty;
-        icon.sprite = item.itemData.itemIcon;
+        itemNameText.text = item.itemData.itemName;
         stackSizeText.text = item.stackSize.ToString();
 
     }
