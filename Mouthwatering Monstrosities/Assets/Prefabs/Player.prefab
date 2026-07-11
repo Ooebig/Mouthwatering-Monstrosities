@@ -269,9 +269,12 @@ MonoBehaviour:
   weaponPivot: {fileID: 25173990084913319}
   weaponModel: {fileID: 0}
   team: 0
-  speed: 10
+  speed: 8
   sprintMod: 1.5
   HP: 100
+  jumpSpeed: 8
+  jumpMax: 1
+  gravity: 18
   blade: {fileID: 0}
   blunt: {fileID: 0}
   ranged: {fileID: 11400000, guid: d1a4f27916e07a54a8114768caf49ab8, type: 2}
@@ -305,6 +308,29 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &8439709641507621531
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392055181358798881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5080335406183266376
 GameObject:
@@ -440,6 +466,7 @@ MonoBehaviour:
   type: 0
   team: 0
   damageAmount: 0
+  damageRate: 0
   rb: {fileID: 0}
   bulletSpeed: 0
   bulletDestroyTime: 0
@@ -739,6 +766,7 @@ MonoBehaviour:
   type: 0
   team: 0
   damageAmount: 0
+  damageRate: 0
   rb: {fileID: 0}
   bulletSpeed: 0
   bulletDestroyTime: 0
