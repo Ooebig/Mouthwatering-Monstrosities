@@ -51,6 +51,8 @@ public class playerController : MonoBehaviour, IDamage
     int jumpCount;
     public int activeWebs = 0;
     public int maxWebs = 3;
+    public bool isStunned;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -62,15 +64,18 @@ public class playerController : MonoBehaviour, IDamage
             activeWeapon = weaponList[i];
             activeWeaponNum = i;
         }
+        isStunned = false;  
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement();
-
-        sprint();
+       if (!isStunned)
+        {
+            movement();
+            sprint();
+        }
     }
 
     void movement()
@@ -93,6 +98,7 @@ public class playerController : MonoBehaviour, IDamage
 
         if (Input.GetButton("Fire1") && weaponList.Length > 0 && attackTimer >= weaponList[activeWeaponNum].attackSpeed && gamemanager.instance.isPaused == false)
         {
+            Debug.Log("Attack Pressed");
             attack();
         }
         selectWeapon();
@@ -100,6 +106,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void attack()
     {
+       
         if (activeWeaponNum == 0)
         {
             bladeZone.SetActive(true);
@@ -229,4 +236,12 @@ public class playerController : MonoBehaviour, IDamage
         Physics.SyncTransforms();
     }
 
+    public IEnumerator stun()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(1f);
+        isStunned = false;
     }
+
+}
+
