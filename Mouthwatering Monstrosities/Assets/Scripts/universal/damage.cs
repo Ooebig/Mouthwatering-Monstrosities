@@ -37,7 +37,12 @@ public class damage : MonoBehaviour
 
         if (dmg != null && dmg.Team != team)
         {
-            dmg.takeDamage(damageAmount);
+            if (team == 1)
+            { dmg.takeDamage(damageAmount * gamemanager.instance.GetDifficultyMult()); }
+            else
+            {
+              dmg.takeDamage(damageAmount);
+            }
             hit = true;
         }
         else if (dmg == null)

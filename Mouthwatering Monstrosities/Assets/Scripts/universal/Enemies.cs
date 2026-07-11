@@ -24,8 +24,7 @@ public class Enemies : MonoBehaviour, IDamage
     [Header("Weapon")]
     [SerializeField] float damageRate;
     [SerializeField] Collider weaponCollider;
-
-
+    float MaxHp;
     Color colorOrig;
 
     Vector3 playerDir;
@@ -42,6 +41,8 @@ public class Enemies : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        MaxHp = HP * gamemanager.instance.GetDifficultyMult();
+        HP = MaxHp;
         colorOrig = model.material.color;
         //gamemanager.instance.updateGameGoal(1);
         startingPos = transform.position;

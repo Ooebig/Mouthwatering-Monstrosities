@@ -15,8 +15,8 @@ public class gamemanager : MonoBehaviour
     [SerializeField] Image roomProgressBar;
     [SerializeField] int roomGoalMax;
     public int roomGoalCount;
-    
-
+    public enum diffucltySetting {Easy, Normal, Hard, Expert}
+    public diffucltySetting currentDifficulty = diffucltySetting.Normal;
 
     public Image playerHPBar;
     public GameObject playerDamageFlash;
@@ -117,5 +117,15 @@ public class gamemanager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
-
+    public float GetDifficultyMult()
+    {
+        switch(currentDifficulty)
+        {
+            case diffucltySetting.Easy: return 0.5f;
+            case diffucltySetting.Normal: return 1.0f;
+            case diffucltySetting.Hard: return 1.5f;
+            case diffucltySetting.Expert: return 2.5f;
+            default: return 1.0f;
+        }
+    }
 }
