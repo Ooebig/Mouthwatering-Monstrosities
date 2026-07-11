@@ -143,14 +143,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5201069429990214571}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0056815427, y: -0.9999831, z: 0.0012550795, w: -0.00000065565104}
-  m_LocalPosition: {x: -0.51, y: -0.01, z: 0.79}
+  m_LocalRotation: {x: 0.96666247, y: 0.0013625165, z: 0.017232087, w: 0.2554702}
+  m_LocalPosition: {x: -0.5160911, y: -0.10164646, z: 0.57745785}
   m_LocalScale: {x: 0.13333564, y: 0.15384309, z: 1.5384614}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3148174180502540607}
   m_Father: {fileID: 4894707352358296418}
-  m_LocalEulerAnglesHint: {x: 0.144, y: -180.001, z: -0.651}
+  m_LocalEulerAnglesHint: {x: -209.595, y: -362.242, z: -0.7539978}
 --- !u!33 &1240810978072610333
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemies
   model: {fileID: 1134418406188666137}
   agent: {fileID: 5311391851209204854}
+  weaponTrans: {fileID: 3630670116900441483}
   HP: 120
   faceTargetSpeed: 0
   FOV: 0
@@ -529,8 +530,10 @@ MonoBehaviour:
   attackRange: 3
   attackDuration: 0
   type: 0
+  enmyTier: 0
   damageRate: 0.75
   weaponCollider: {fileID: 4363992415275841243}
+  swingSpeed: 1.5
 --- !u!195 &5311391851209204854
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -581,7 +584,7 @@ Transform:
   m_GameObject: {fileID: 8962740946995495269}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.049999952, y: -1.6500002, z: -0.528}
+  m_LocalPosition: {x: 0.04, y: 1.54, z: -0.528}
   m_LocalScale: {x: 1.5, y: 5, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []

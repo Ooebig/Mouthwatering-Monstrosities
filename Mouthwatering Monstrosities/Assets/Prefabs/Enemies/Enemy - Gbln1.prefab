@@ -143,13 +143,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4030827117224737122}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: 0, w: 0.0000005960464}
-  m_LocalPosition: {x: -0.47, y: 0.10678665, z: 1.26}
+  m_LocalRotation: {x: -0.9651527, y: -0.0014373831, z: -0.00016080264, w: -0.2616837}
+  m_LocalPosition: {x: -0.56, y: 0.26, z: 0.94}
   m_LocalScale: {x: 0.2, y: 0.26666668, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2985470075523154620}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 149.66, y: -360.07098, z: -0.19000244}
 --- !u!33 &8909776442242317896
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemies
   model: {fileID: 9149136943174743762}
   agent: {fileID: -5493892446865635466}
+  weaponTrans: {fileID: 8879952384535558995}
   HP: 25
   faceTargetSpeed: 0
   FOV: 0
@@ -529,8 +530,10 @@ MonoBehaviour:
   attackRange: 5
   attackDuration: 0.25
   type: 0
+  enmyTier: 0
   damageRate: 0.75
   weaponCollider: {fileID: 1917243113776355857}
+  swingSpeed: 1
 --- !u!195 &-5493892446865635466
 NavMeshAgent:
   m_ObjectHideFlags: 0

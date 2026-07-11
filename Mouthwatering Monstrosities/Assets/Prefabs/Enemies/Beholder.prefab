@@ -815,7 +815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &436193523808706957
 Transform:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7401927200894721108}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.99893343, z: -0, w: -0.046173394}
+  m_LocalRotation: {x: 0, y: 0.99893343, z: -0, w: -0.046173587}
   m_LocalPosition: {x: 0.3428328, y: 3.65, z: -2.485814}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
@@ -928,6 +928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemies
   model: {fileID: 6270716276122919326}
   agent: {fileID: 4553264997426164109}
+  weaponTrans: {fileID: 0}
   HP: 750
   faceTargetSpeed: 0
   FOV: 0
@@ -936,8 +937,10 @@ MonoBehaviour:
   attackRange: 5
   attackDuration: 0.25
   type: 4
+  enmyTier: 0
   damageRate: 0.5
   weaponCollider: {fileID: 1568179709899409028}
+  swingSpeed: 0
 --- !u!195 &4553264997426164109
 NavMeshAgent:
   m_ObjectHideFlags: 0

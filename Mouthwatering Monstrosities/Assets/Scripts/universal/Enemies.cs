@@ -3,13 +3,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using UnityEngine.Timeline;
+using UnityEditor.Build;
+using Unity.Mathematics;
+using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 public class Enemies : MonoBehaviour, IDamage
 {
-    enum enemyType { goblinoid, hybrid, lizard, undead, abberartion };
+    enum enemyType {goblinoid, hybrid, lizard, undead, abberartion };
+    public enum enemyTier { standard, boss, final }
     [Header("Components")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Transform weaponTrans;
 
     [Header("Stats")]
     [SerializeField] float HP;
@@ -20,10 +27,12 @@ public class Enemies : MonoBehaviour, IDamage
     [SerializeField] float attackRange;
     [SerializeField] float attackDuration;
     [SerializeField] enemyType type;
+    [SerializeField] enemyTier enmyTier;
 
     [Header("Weapon")]
     [SerializeField] float damageRate;
     [SerializeField] Collider weaponCollider;
+    [SerializeField] float swingSpeed;
 
 
     Color colorOrig;
@@ -32,7 +41,8 @@ public class Enemies : MonoBehaviour, IDamage
     Vector3 startingPos;
 
     float damageTimer;
-    float stoppingDistOrig;
+    Quaternion startRotation;
+
     Spawner enemySpawner;
 
     int IDamage.Team => 1;
@@ -43,6 +53,7 @@ public class Enemies : MonoBehaviour, IDamage
         colorOrig = model.material.color;
         startingPos = transform.position;
         enemySpawner = FindAnyObjectByType<Spawner>();
+        startRotation = weaponTrans.localRotation;
     }
 
     // Update is called once per frame
@@ -64,7 +75,36 @@ public class Enemies : MonoBehaviour, IDamage
     {
         damageTimer = 0;
         faceTarget();
-        StartCoroutine(MeleeAttack());
+
+        switch (enmyTier)
+        {
+            case enemyTier.standard:
+                StartCoroutine(BasicAttack());
+                break;
+
+            case enemyTier.boss:
+
+                if(UnityEngine.Random.value < 0.6f)
+                {
+                    BasicAttack();
+                }
+                else
+                {
+
+                }
+                
+
+                break;
+
+            case enemyTier.final:
+
+                break;
+
+
+            default:
+                break;
+        }
+        
     }
 
     void faceTarget()
@@ -81,7 +121,7 @@ public class Enemies : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-           if (enemySpawner != null)
+            if (enemySpawner != null)
             {
                 enemySpawner.EnemyDied(gameObject);
             }
@@ -100,14 +140,43 @@ public class Enemies : MonoBehaviour, IDamage
         model.material.color = colorOrig;
     }
 
-    IEnumerator MeleeAttack()
+    IEnumerator BasicAttack()
     {
         agent.isStopped = true;
         weaponCollider.enabled = true;
 
-        yield return new WaitForSeconds(attackDuration);
+        Quaternion windup = startRotation * Quaternion.Euler(-60, 0, 0);
+        Quaternion swing = startRotation * Quaternion.Euler(80, 0, 0);
+
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed;
+            weaponTrans.localRotation = Quaternion.Slerp(startRotation, windup, t);
+            yield return null;
+        }
+
+        weaponCollider.enabled = true;
+
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed * 2;
+            weaponTrans.localRotation = Quaternion.Slerp(windup, swing, t);
+            yield return null;
+        }
 
         weaponCollider.enabled = false;
+
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed;
+            weaponTrans.localRotation = Quaternion.Slerp(swing, startRotation, t);
+            yield return null;
+        }
+
+        weaponTrans.localRotation = startRotation;
         agent.isStopped = false;
     }
 
