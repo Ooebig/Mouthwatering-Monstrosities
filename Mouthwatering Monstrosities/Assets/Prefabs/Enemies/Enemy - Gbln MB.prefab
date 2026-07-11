@@ -244,6 +244,7 @@ MonoBehaviour:
   type: 1
   team: 1
   damageAmount: 30
+  damageRate: 0
   rb: {fileID: 3699341746800281691}
   bulletSpeed: 0
   bulletDestroyTime: 0
@@ -402,6 +403,7 @@ GameObject:
   - component: {fileID: 8320232361507830990}
   - component: {fileID: 7619500950304230677}
   - component: {fileID: 5311391851209204854}
+  - component: {fileID: 2815057996215071077}
   m_Layer: 0
   m_Name: Enemy - Gbln MB
   m_TagString: Untagged
@@ -530,7 +532,7 @@ MonoBehaviour:
   attackRange: 3
   attackDuration: 0
   type: 0
-  enmyTier: 0
+  enmyTier: 1
   damageRate: 0.75
   weaponCollider: {fileID: 4363992415275841243}
   swingSpeed: 1.5
@@ -556,6 +558,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2815057996215071077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709578624112001219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a70a6a0112ef74ebc0181e550765c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootBag
+  dropsList: []
 --- !u!1 &8962740946995495269
 GameObject:
   m_ObjectHideFlags: 0

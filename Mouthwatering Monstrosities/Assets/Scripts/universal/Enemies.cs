@@ -8,6 +8,7 @@ using UnityEditor.Build;
 using Unity.Mathematics;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using System;
 
 public class Enemies : MonoBehaviour, IDamage
 {
@@ -35,6 +36,7 @@ public class Enemies : MonoBehaviour, IDamage
     [SerializeField] float swingSpeed;
 
 
+    float MaxHp;
     Color colorOrig;
 
     Vector3 playerDir;
@@ -50,6 +52,8 @@ public class Enemies : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        MaxHp = HP * gamemanager.instance.GetDifficultyMult();
+        HP = MaxHp;
         colorOrig = model.material.color;
         startingPos = transform.position;
         enemySpawner = FindAnyObjectByType<Spawner>();
@@ -84,13 +88,13 @@ public class Enemies : MonoBehaviour, IDamage
 
             case enemyTier.boss:
 
-                if(UnityEngine.Random.value < 0.6f)
+                if(UnityEngine.Random.value < 0.7)
                 {
-                    BasicAttack();
+                    StartCoroutine(BasicAttack());
                 }
                 else
                 {
-
+                    StartCoroutine(SpecialAttack());
                 }
                 
 
@@ -106,6 +110,8 @@ public class Enemies : MonoBehaviour, IDamage
         }
         
     }
+
+  
 
     void faceTarget()
     {
@@ -143,7 +149,6 @@ public class Enemies : MonoBehaviour, IDamage
     IEnumerator BasicAttack()
     {
         agent.isStopped = true;
-        weaponCollider.enabled = true;
 
         Quaternion windup = startRotation * Quaternion.Euler(-60, 0, 0);
         Quaternion swing = startRotation * Quaternion.Euler(80, 0, 0);
@@ -177,6 +182,47 @@ public class Enemies : MonoBehaviour, IDamage
         }
 
         weaponTrans.localRotation = startRotation;
+        agent.isStopped = false;
+    }
+
+    IEnumerator SpecialAttack()
+    {
+        agent.isStopped = true;
+        weaponCollider.enabled = true;
+
+        Quaternion windup = startRotation * Quaternion.Euler(0, -60, 0);
+        Quaternion swing = startRotation * Quaternion.Euler(0, 80, 0);
+
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed;
+            weaponTrans.localRotation = Quaternion.Slerp(startRotation, windup, t);
+            yield return null;
+        }
+
+        weaponCollider.enabled = true;
+
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed * 2;
+            weaponTrans.localRotation = Quaternion.Slerp(windup, swing, t);
+            yield return null;
+        }
+
+        weaponCollider.enabled = false;
+
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed;
+            weaponTrans.localRotation = Quaternion.Slerp(swing, startRotation, t);
+            yield return null;
+        }
+
+        gamemanager.instance.playerScript.StartCoroutine(gamemanager.instance.playerScript.stun());
+
         agent.isStopped = false;
     }
 

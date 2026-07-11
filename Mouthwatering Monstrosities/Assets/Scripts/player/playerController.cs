@@ -20,9 +20,12 @@ public class playerController : MonoBehaviour, IDamage
     public int Team => team;
 
     [Header("Stats")]
-    [SerializeField, Range(5, 50)] public float speed = 10;
+    [SerializeField, Range(0, 50)] public float speed = 10;
     [SerializeField, Range(1.1f, 3f)] public float sprintMod = 1.5f;
     [SerializeField, Range(25f, 250f)] public float HP = 100f;
+    [SerializeField] int jumpSpeed;
+    [SerializeField] int jumpMax;
+    [SerializeField] public int gravity;
     int lookSens = 30;
 
     [Header("Enabled Weapons")]
@@ -45,7 +48,10 @@ public class playerController : MonoBehaviour, IDamage
     float attackTimer;
     public float originalHP;
     bool isSprinting = false;
-
+    int jumpCount;
+    public int activeWebs = 0;
+    public int maxWebs = 3;
+    public bool isStunned;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -57,32 +63,38 @@ public class playerController : MonoBehaviour, IDamage
             activeWeapon = weaponList[i];
             activeWeaponNum = i;
         }
+        isStunned = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement();
-
-        sprint();
+        if (!isStunned)
+        {
+            movement();
+            sprint();
+        }
     }
 
     void movement()
     {
         attackTimer += Time.deltaTime;
-        //if (moveDir.magnitude > 0.3f && !isPlayingStep)
-        //{
-        //    StartCoroutine(playStep());
-        //}
+
+        if (controller.isGrounded)
+        {
+            jumpCount = 0;
+            playerVel.y = 0;
+        }
+
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
 
-        
+        jump();
         controller.Move(playerVel * Time.deltaTime);
 
+        playerVel.y -= gravity * Time.deltaTime;
 
-        
         if (Input.GetButton("Fire1") && weaponList.Length > 0 && attackTimer >= weaponList[activeWeaponNum].attackSpeed && gamemanager.instance.isPaused == false)
         {
             attack();
@@ -117,6 +129,14 @@ public class playerController : MonoBehaviour, IDamage
         zone.SetActive(false);
     }
 
+    void jump()
+    {
+        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
+        {
+            jumpCount++;
+            playerVel.y = jumpSpeed;
+        }
+    }
     void sprint()
     {
         if (Input.GetButtonDown("Sprint"))
@@ -205,6 +225,18 @@ public class playerController : MonoBehaviour, IDamage
         gamemanager.instance.playerDamageFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gamemanager.instance.playerDamageFlash.SetActive(false);
+    }
+
+    public void changePlayerPos()
+    {
+        controller.transform.position = gamemanager.instance.playerSpawnPos.transform.position;
+        Physics.SyncTransforms();
+    }
+    public IEnumerator stun()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(1f);
+        isStunned = false;
     }
 
 }

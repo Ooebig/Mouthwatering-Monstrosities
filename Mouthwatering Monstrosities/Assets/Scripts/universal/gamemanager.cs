@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class gamemanager : MonoBehaviour
 {
@@ -12,18 +12,21 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuClear;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuSkillTree;
+    [SerializeField] TMP_Text timeLimit;
+    [SerializeField] float remainingTime;
     [SerializeField] Image roomProgressBar;
     [SerializeField] int roomGoalMax;
     public int roomGoalCount;
-    
-
+    public enum diffucltySetting {Easy, Normal, Hard, Expert}
+    public diffucltySetting currentDifficulty = diffucltySetting.Normal;
 
     public Image playerHPBar;
     public GameObject playerDamageFlash;
-
+    public GameObject playerFallingFlash;
     public bool isPaused;
     public GameObject player;
     public playerController playerScript;
+    public GameObject playerSpawnPos;
 
     float timeScaleOrig;
 
@@ -34,6 +37,7 @@ public class gamemanager : MonoBehaviour
         instance = this;
         timeScaleOrig = Time.timeScale;
         player = GameObject.FindWithTag("Player");
+        playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
         Cursor.visible = false;
         if (player != null)
         {
@@ -44,6 +48,8 @@ public class gamemanager : MonoBehaviour
 
     void Update()
     {
+        countdownTimer();
+
         if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == null)
@@ -117,5 +123,31 @@ public class gamemanager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
+    public float GetDifficultyMult()
+    {
+        switch(currentDifficulty)
+        {
+            case diffucltySetting.Easy: return 0.5f;
+            case diffucltySetting.Normal: return 1.0f;
+            case diffucltySetting.Hard: return 1.5f;
+            case diffucltySetting.Expert: return 2.5f;
+            default: return 1.0f;
+        }
+    }
+    public void countdownTimer()
+    {
+        if (remainingTime > 0) remainingTime -= Time.deltaTime;
+        else if (remainingTime < 0)
+        {
+            remainingTime = 0;
+            statePause();
+            menuActive = menuLose;
+            menuActive.SetActive(true);
+
+        }
+        int minutes = Mathf.FloorToInt(remainingTime / 60);
+        int seconds = Mathf.FloorToInt(remainingTime % 60);
+        timeLimit.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
 
 }

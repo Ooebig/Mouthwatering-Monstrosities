@@ -5,8 +5,6 @@ public class Door : MonoBehaviour
     [SerializeField] GameObject doorModel;
     [SerializeField] public bool Locked = false;
 
-    bool inTrigger = false;
-
 
 
     private void OnTriggerEnter(Collider other)
@@ -15,7 +13,6 @@ public class Door : MonoBehaviour
         {
             doorModel.SetActive(false);
         }
-        inTrigger = true;
     }
 
 
