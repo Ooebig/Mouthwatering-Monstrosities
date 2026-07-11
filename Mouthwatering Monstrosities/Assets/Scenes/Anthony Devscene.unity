@@ -338,6 +338,22 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 898217876}
+    - target: {fileID: 2338717537799050698, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1531390286}
+    - target: {fileID: 2338717537799050698, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: cookSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338717537799050698, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: gamemanager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338717537799050698, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2465779353577186723, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -638,6 +654,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7830286401460130545, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7841403782086207636, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -856,6 +876,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 88818fc983df6fd4eb69a6877e500b50, type: 2}
   - {fileID: 11400000, guid: 262465ebf5e0adb4ab16dfb777ab8ce3, type: 2}
   - {fileID: 11400000, guid: afcf73c9caa237543ab0a79418e2f744, type: 2}
+--- !u!114 &1531390286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1144693026809542925, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+  m_PrefabInstance: {fileID: 1074123855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9194055f36b614743bae3079a20bd7da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::gamemanager
 --- !u!1 &1703659027
 GameObject:
   m_ObjectHideFlags: 0

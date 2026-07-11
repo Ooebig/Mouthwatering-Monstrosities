@@ -10751,9 +10751,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4294002508392046050, guid: 90ade13ba0a086b429ee5023131b54b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1144693026809542925}
+    - target: {fileID: 4294002508392046050, guid: 90ade13ba0a086b429ee5023131b54b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: cookSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294002508392046050, guid: 90ade13ba0a086b429ee5023131b54b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: gamemanager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294002508392046050, guid: 90ade13ba0a086b429ee5023131b54b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8595494051887667929, guid: 90ade13ba0a086b429ee5023131b54b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8595494051887667929, guid: 90ade13ba0a086b429ee5023131b54b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
