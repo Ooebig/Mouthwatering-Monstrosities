@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7418407551324693556}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3530706080355898519}
   - component: {fileID: 5983723448651491124}
   - component: {fileID: 3714391013299521656}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -195,9 +195,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8024104703853037519}
+  - component: {fileID: 135804836516847554}
+  - component: {fileID: 6589953195094689595}
   - component: {fileID: 5050280615010795653}
   - component: {fileID: 930540759064089166}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -222,6 +224,31 @@ Transform:
   - {fileID: 1516209036098172173}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &135804836516847554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392055181358798881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2fa9a6f4fcd5f4cbef8246dfac5d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collector
+--- !u!114 &6589953195094689595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392055181358798881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7019f07f0ba37754dbc7435870e852b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
+  playerInv: []
 --- !u!114 &5050280615010795653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,9 +269,12 @@ MonoBehaviour:
   weaponPivot: {fileID: 25173990084913319}
   weaponModel: {fileID: 0}
   team: 0
-  speed: 10
+  speed: 8
   sprintMod: 1.5
   HP: 100
+  jumpSpeed: 8
+  jumpMax: 1
+  gravity: 18
   blade: {fileID: 0}
   blunt: {fileID: 0}
   ranged: {fileID: 11400000, guid: d1a4f27916e07a54a8114768caf49ab8, type: 2}
@@ -279,6 +309,29 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &8439709641507621531
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392055181358798881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5080335406183266376
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 25173990084913319}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1516209036098172173}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Melee Zones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +408,7 @@ GameObject:
   - component: {fileID: 7061598195492463058}
   - component: {fileID: 446548868934444857}
   - component: {fileID: 2018945929803420176}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BluntZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,6 +466,7 @@ MonoBehaviour:
   type: 0
   team: 0
   damageAmount: 0
+  damageRate: 0
   rb: {fileID: 0}
   bulletSpeed: 0
   bulletDestroyTime: 0
@@ -427,7 +481,8 @@ GameObject:
   - component: {fileID: 2598917679857087982}
   - component: {fileID: 4843281594171550369}
   - component: {fileID: 6510549544683811505}
-  m_Layer: 0
+  - component: {fileID: 8529777005231256129}
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,6 +562,29 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8529777005231256129
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508615427624815175}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8381589645633025451
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +708,7 @@ GameObject:
   - component: {fileID: 1936465488612941137}
   - component: {fileID: 6659037639257851895}
   - component: {fileID: 2497695424682918724}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BladeZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,6 +766,7 @@ MonoBehaviour:
   type: 0
   team: 0
   damageAmount: 0
+  damageRate: 0
   rb: {fileID: 0}
   bulletSpeed: 0
   bulletDestroyTime: 0

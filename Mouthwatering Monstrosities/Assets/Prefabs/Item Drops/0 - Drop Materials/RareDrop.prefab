@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3865558353585623951}
   - component: {fileID: 9073630826702214749}
   - component: {fileID: 3810432420875616929}
+  - component: {fileID: -2546698273687449155}
   - component: {fileID: 4252796757612997981}
   m_Layer: 0
   m_Name: RareDrop
@@ -107,12 +108,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2546698273687449155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250537738140844574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f4f8eb5486d3a34a8758d91cf319e9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collectible
 --- !u!96 &4252796757612997981
 TrailRenderer:
   serializedVersion: 4

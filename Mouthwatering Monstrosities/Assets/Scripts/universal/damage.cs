@@ -1,37 +1,33 @@
+using NUnit.Framework;
+using System.Collections;
 using UnityEngine;
 
 public class damage : MonoBehaviour
 {
-    public enum Type { Projectile, Melee }
+    public enum Type { Projectile, Melee, DOT }
+
     [SerializeField] public Type type;
     [SerializeField] public int team;
     [SerializeField] public float damageAmount;
+    [SerializeField] float damageRate;
 
     [SerializeField] public Rigidbody rb;
     [SerializeField] public float bulletSpeed;
     [SerializeField] public int bulletDestroyTime;
 
+    bool isDamaging;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-        if  (type == Type.Projectile)
+        if (type == Type.Projectile)
         {
             rb.linearVelocity = transform.forward * bulletSpeed;
             Destroy(gameObject, bulletDestroyTime);
         }
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider other)
     {
-
         IDamage dmg = other.GetComponent<IDamage>();
         bool hit = false;
 
@@ -49,9 +45,39 @@ public class damage : MonoBehaviour
         {
             hit = true;
         }
+        else if (dmg.Team != team)
+        {
+            hit = true;
+
+            if (type != Type.DOT)
+            {
+                dmg.takeDamage(damageAmount);
+            }
+        }
+
         if (hit && type == Type.Projectile)
         {
             Destroy(gameObject);
         }
     }
-} 
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.isTrigger) return;
+
+        IDamage dmg = other.GetComponent<IDamage>();
+
+        if (dmg != null && dmg.Team != team && type == Type.DOT && !isDamaging)
+        {
+            StartCoroutine(damageOther(dmg));
+        }
+    }
+
+    IEnumerator damageOther(IDamage d)
+    {
+        isDamaging = true;
+        d.takeDamage(damageAmount);
+        yield return new WaitForSeconds(damageRate);
+        isDamaging = false;
+    }
+}
