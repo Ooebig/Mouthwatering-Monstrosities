@@ -13,7 +13,7 @@ using System;
 public class Enemies : MonoBehaviour, IDamage
 {
     enum enemyType {goblinoid, hybrid, lizard, undead, abberartion };
-    public enum enemyTier { standard, boss, final }
+    public enum enemyTier { standard, minibboss, boss, final }
     [Header("Components")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;

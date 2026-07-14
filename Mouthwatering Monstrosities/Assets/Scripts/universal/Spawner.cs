@@ -49,9 +49,7 @@ public class Spawner : MonoBehaviour
         randPos += transform.position;
 
         NavMeshHit hit;
-
         NavMesh.SamplePosition(randPos, out hit, spawnDist, 1);
-
         int arrPos = Random.Range(0, objectToSpawn.Length);
 
        GameObject enemy = Instantiate(objectToSpawn[arrPos], hit.position, Quaternion.Euler(0, Random.Range(0, 360), 0));
