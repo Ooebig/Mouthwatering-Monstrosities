@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8791696100335519429}
   - component: {fileID: 3046307963235534882}
   - component: {fileID: 3493192752978882857}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 1684534249282845501}
   - component: {fileID: 2582323415393398424}
   - component: {fileID: 9157830926765185081}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 5434567193735273965}
   - component: {fileID: 4210707370487111224}
   - component: {fileID: 6902877173081437782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy - Gbln3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,11 +357,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b4cf0a5b55b1a49be8cd059e66fd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemies
-  HP: 10
-  HPOrig: 10
-  type: 0
-  damageAmount: 2
-  damageRate: 0.75
-  FOV: 0
-  agent: {fileID: 0}
   model: {fileID: 0}
+  agent: {fileID: 0}
+  weaponTrans: {fileID: 0}
+  HP: 10
+  faceTargetSpeed: 0
+  FOV: 0
+  roamDist: 0
+  roamDelay: 0
+  attackRange: 0
+  attackDuration: 0
+  type: 0
+  enmyTier: 0
+  damageRate: 0.75
+  weaponCollider: {fileID: 0}
+  swingSpeed: 0
