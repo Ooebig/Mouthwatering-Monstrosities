@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9200099678526791318}
   - component: {fileID: 3962758571722979066}
   - component: {fileID: 8329849306547569604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye stalk (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 138041042644587595}
   - component: {fileID: 6235840168916156916}
   - component: {fileID: 1312822159246027212}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye stalk (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 2761365313481504145}
   - component: {fileID: 7343802166307137092}
   - component: {fileID: 839186974669607427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 2133755199747350840}
   - component: {fileID: 2958819287170302457}
   - component: {fileID: 8052955935552370848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 2163178130206373618}
   - component: {fileID: 1675805823389053646}
   - component: {fileID: 5235653858946058032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Inner eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 3418369119071682478}
   - component: {fileID: 1886017610128053796}
   - component: {fileID: 4028590164408477684}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 2554132262912638793}
   - component: {fileID: 6599865207827816938}
   - component: {fileID: 7892241552340458222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 6617866221845225177}
   - component: {fileID: 7763290658417536640}
   - component: {fileID: 4553264997426164109}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Beholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 3755003959994876753}
   - component: {fileID: 6413788682347036013}
   - component: {fileID: 8961408975798297002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye stalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1091,7 +1091,7 @@ GameObject:
   - component: {fileID: 1568179709899409028}
   - component: {fileID: 6345190569096449256}
   - component: {fileID: 4625984603508031832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,6 +1157,7 @@ MonoBehaviour:
   type: 1
   team: 1
   damageAmount: 325
+  damageRate: 0
   rb: {fileID: 4625984603508031832}
   bulletSpeed: 0
   bulletDestroyTime: 0

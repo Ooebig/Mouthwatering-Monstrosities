@@ -13,7 +13,7 @@ using System;
 public class Enemies : MonoBehaviour, IDamage
 {
     enum enemyType {goblinoid, hybrid, lizard, undead, abberartion };
-    public enum enemyTier { standard, boss, final }
+    public enum enemyTier { standard,miniboss, boss, final }
     [Header("Components")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
@@ -22,9 +22,6 @@ public class Enemies : MonoBehaviour, IDamage
     [Header("Stats")]
     [SerializeField] float HP;
     [SerializeField] int faceTargetSpeed;
-    [SerializeField] int FOV;
-    [SerializeField] int roamDist;
-    [SerializeField] int roamDelay;
     [SerializeField] float attackRange;
     [SerializeField] float attackDuration;
     [SerializeField] enemyType type;
@@ -86,7 +83,7 @@ public class Enemies : MonoBehaviour, IDamage
                 StartCoroutine(BasicAttack());
                 break;
 
-            case enemyTier.boss:
+            case enemyTier.miniboss:
 
                 if(UnityEngine.Random.value < 0.7)
                 {
@@ -94,7 +91,7 @@ public class Enemies : MonoBehaviour, IDamage
                 }
                 else
                 {
-                    StartCoroutine(SpecialAttack());
+                    StartCoroutine(MBSpecialAttack());
                 }
                 
 
@@ -150,8 +147,8 @@ public class Enemies : MonoBehaviour, IDamage
     {
         agent.isStopped = true;
 
-        Quaternion windup = startRotation * Quaternion.Euler(-60, 0, 0);
-        Quaternion swing = startRotation * Quaternion.Euler(80, 0, 0);
+        Quaternion windup = startRotation * Quaternion.Euler(0, 0, -60);
+        Quaternion swing = startRotation * Quaternion.Euler(0, 0, 80);
 
         float t = 0;
         while (t < 1)
@@ -185,7 +182,7 @@ public class Enemies : MonoBehaviour, IDamage
         agent.isStopped = false;
     }
 
-    IEnumerator SpecialAttack()
+    IEnumerator MBSpecialAttack()
     {
         agent.isStopped = true;
         weaponCollider.enabled = true;
@@ -221,7 +218,10 @@ public class Enemies : MonoBehaviour, IDamage
             yield return null;
         }
 
-        gamemanager.instance.playerScript.StartCoroutine(gamemanager.instance.playerScript.stun());
+        if (type == enemyType.goblinoid)
+        {
+            gamemanager.instance.playerScript.StartCoroutine(gamemanager.instance.playerScript.stun());
+        }
 
         agent.isStopped = false;
     }
