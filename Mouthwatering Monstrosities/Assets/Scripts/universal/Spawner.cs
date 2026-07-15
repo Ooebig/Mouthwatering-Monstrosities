@@ -61,7 +61,6 @@ public class Spawner : MonoBehaviour
         spawnTimer = 0;
         startSpawning = true;
         spawnList.Remove(enemy);
-        //GetComponent<LootBag>().InstantiateDrops(transform.position);
     }
 
 }
