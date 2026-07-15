@@ -9,11 +9,12 @@ using Unity.Mathematics;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Analytics;
 
 public class Enemies : MonoBehaviour, IDamage
 {
-    enum enemyType {goblinoid, hybrid, lizard, undead, abberartion };
-    public enum enemyTier { standard, boss, final }
+    enum enemyType { goblinoid, hybrid, lizard, undead, abberartion };
+    public enum enemyTier { standard, miniboss, boss, final }
     [Header("Components")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
@@ -22,9 +23,6 @@ public class Enemies : MonoBehaviour, IDamage
     [Header("Stats")]
     [SerializeField] float HP;
     [SerializeField] int faceTargetSpeed;
-    [SerializeField] int FOV;
-    [SerializeField] int roamDist;
-    [SerializeField] int roamDelay;
     [SerializeField] float attackRange;
     [SerializeField] float attackDuration;
     [SerializeField] enemyType type;
@@ -85,21 +83,31 @@ public class Enemies : MonoBehaviour, IDamage
                 StartCoroutine(BasicAttack());
                 break;
 
-            case enemyTier.boss:
+            case enemyTier.miniboss:
 
-                if(UnityEngine.Random.value < 0.7)
+                if (UnityEngine.Random.value < 0.7)
                 {
                     StartCoroutine(BasicAttack());
                 }
                 else
                 {
-                    StartCoroutine(SpecialAttack());
+                    StartCoroutine(MBSpecialAttack());
                 }
-                
+
 
                 break;
 
             case enemyTier.final:
+
+                //if (UnityEngine.Random.value < 0.6)
+                //{
+                //    StartCoroutine(BasicAttack());
+                //}
+                //else
+                //{
+                //    StartCoroutine(BossSpecial());
+                //}
+
 
                 break;
 
@@ -107,10 +115,10 @@ public class Enemies : MonoBehaviour, IDamage
             default:
                 break;
         }
-        
+
     }
 
-  
+
 
     void faceTarget()
     {
@@ -149,9 +157,9 @@ public class Enemies : MonoBehaviour, IDamage
     IEnumerator BasicAttack()
     {
         agent.isStopped = true;
-
-        Quaternion windup = startRotation * Quaternion.Euler(-60, 0, 0);
-        Quaternion swing = startRotation * Quaternion.Euler(80, 0, 0);
+       
+        Quaternion windup = startRotation * Quaternion.Euler(0, 0, -60);
+        Quaternion swing = startRotation * Quaternion.Euler(0, 0, 80);
 
         float t = 0;
         while (t < 1)
@@ -185,7 +193,7 @@ public class Enemies : MonoBehaviour, IDamage
         agent.isStopped = false;
     }
 
-    IEnumerator SpecialAttack()
+    IEnumerator MBSpecialAttack()
     {
         agent.isStopped = true;
         weaponCollider.enabled = true;
@@ -221,8 +229,51 @@ public class Enemies : MonoBehaviour, IDamage
             yield return null;
         }
 
-        gamemanager.instance.playerScript.StartCoroutine(gamemanager.instance.playerScript.stun());
+        if (type == enemyType.goblinoid)
+        {
+            gamemanager.instance.playerScript.StartCoroutine(gamemanager.instance.playerScript.stun());
+        }
 
+        agent.isStopped = false;
+    }
+
+    IEnumerator BossSpecial()
+    {
+        agent.isStopped = true;
+        weaponCollider.enabled = true;
+
+        Quaternion windup = startRotation * Quaternion.Euler(0, 0, -60);
+        Quaternion swing = startRotation * Quaternion.Euler(0, 0, 80);
+
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed;
+            weaponTrans.localRotation = Quaternion.Slerp(startRotation, windup, t);
+            yield return null;
+        }
+
+        weaponCollider.enabled = true;
+
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed * 2;
+            weaponTrans.localRotation = Quaternion.Slerp(windup, swing, t);
+            yield return null;
+        }
+
+        weaponCollider.enabled = false;
+
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed;
+            weaponTrans.localRotation = Quaternion.Slerp(swing, startRotation, t);
+            yield return null;
+        }
+
+        weaponTrans.localRotation = startRotation;
         agent.isStopped = false;
     }
 }

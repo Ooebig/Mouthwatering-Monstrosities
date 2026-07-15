@@ -526,9 +526,6 @@ MonoBehaviour:
   weaponTrans: {fileID: 3630670116900441483}
   HP: 120
   faceTargetSpeed: 0
-  FOV: 0
-  roamDist: 0
-  roamDelay: 0
   attackRange: 3
   attackDuration: 0
   type: 0
