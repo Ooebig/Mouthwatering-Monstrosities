@@ -9,11 +9,12 @@ using Unity.Mathematics;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Analytics;
 
 public class Enemies : MonoBehaviour, IDamage
 {
-    enum enemyType {goblinoid, hybrid, lizard, undead, abberartion };
-    public enum enemyTier { standard,miniboss, boss, final }
+    enum enemyType { goblinoid, hybrid, lizard, undead, abberartion };
+    public enum enemyTier { standard, miniboss, boss, final }
     [Header("Components")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
@@ -84,7 +85,7 @@ public class Enemies : MonoBehaviour, IDamage
 
             case enemyTier.miniboss:
 
-                if(UnityEngine.Random.value < 0.7)
+                if (UnityEngine.Random.value < 0.7)
                 {
                     StartCoroutine(BasicAttack());
                 }
@@ -92,13 +93,20 @@ public class Enemies : MonoBehaviour, IDamage
                 {
                     StartCoroutine(MBSpecialAttack());
                 }
-                
+
 
                 break;
 
             case enemyTier.final:
-                
-                if( UnityEngine.Random.value < 0.1)
+
+                //if (UnityEngine.Random.value < 0.6)
+                //{
+                //    StartCoroutine(BasicAttack());
+                //}
+                //else
+                //{
+                //    StartCoroutine(BossSpecial());
+                //}
 
 
                 break;
@@ -107,10 +115,10 @@ public class Enemies : MonoBehaviour, IDamage
             default:
                 break;
         }
-        
+
     }
 
-  
+
 
     void faceTarget()
     {
@@ -149,7 +157,7 @@ public class Enemies : MonoBehaviour, IDamage
     IEnumerator BasicAttack()
     {
         agent.isStopped = true;
-
+       
         Quaternion windup = startRotation * Quaternion.Euler(0, 0, -60);
         Quaternion swing = startRotation * Quaternion.Euler(0, 0, 80);
 
@@ -228,4 +236,45 @@ public class Enemies : MonoBehaviour, IDamage
 
         agent.isStopped = false;
     }
+
+    IEnumerator BossSpecial()
+    {
+        agent.isStopped = true;
+        weaponCollider.enabled = true;
+
+        Quaternion windup = startRotation * Quaternion.Euler(0, 0, -60);
+        Quaternion swing = startRotation * Quaternion.Euler(0, 0, 80);
+
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed;
+            weaponTrans.localRotation = Quaternion.Slerp(startRotation, windup, t);
+            yield return null;
+        }
+
+        weaponCollider.enabled = true;
+
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed * 2;
+            weaponTrans.localRotation = Quaternion.Slerp(windup, swing, t);
+            yield return null;
+        }
+
+        weaponCollider.enabled = false;
+
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * swingSpeed;
+            weaponTrans.localRotation = Quaternion.Slerp(swing, startRotation, t);
+            yield return null;
+        }
+
+        weaponTrans.localRotation = startRotation;
+        agent.isStopped = false;
+    }
+
 }
