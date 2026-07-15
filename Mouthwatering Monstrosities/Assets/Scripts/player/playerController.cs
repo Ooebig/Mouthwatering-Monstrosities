@@ -53,6 +53,7 @@ public class playerController : MonoBehaviour, IDamage
     public int maxWebs = 3;
     public bool isStunned;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -94,8 +95,6 @@ public class playerController : MonoBehaviour, IDamage
         controller.Move(playerVel * Time.deltaTime);
 
         playerVel.y -= gravity * Time.deltaTime;
-
-        Debug.Log("About to attack Pressed");
 
         if (Input.GetButton("Fire1") && weaponList.Length > 0 && attackTimer >= weaponList[activeWeaponNum].attackSpeed && gamemanager.instance.isPaused == false)
         {
@@ -210,6 +209,7 @@ public class playerController : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            updatePlayerUI();
             gamemanager.instance.youLose();
         }
         else
@@ -236,6 +236,7 @@ public class playerController : MonoBehaviour, IDamage
         controller.transform.position = gamemanager.instance.playerSpawnPos.transform.position;
         Physics.SyncTransforms();
     }
+
     public IEnumerator stun()
     {
         isStunned = true;
@@ -244,3 +245,4 @@ public class playerController : MonoBehaviour, IDamage
     }
 
 }
+

@@ -33,7 +33,6 @@ public class Enemies : MonoBehaviour, IDamage
     [SerializeField] Collider weaponCollider;
     [SerializeField] float swingSpeed;
 
-
     float MaxHp;
     Color colorOrig;
 
@@ -140,6 +139,7 @@ public class Enemies : MonoBehaviour, IDamage
                 enemySpawner.EnemyDied(gameObject);
             }
             Destroy(gameObject);
+
         }
         else
         {
@@ -276,5 +276,4 @@ public class Enemies : MonoBehaviour, IDamage
         weaponTrans.localRotation = startRotation;
         agent.isStopped = false;
     }
-
 }

@@ -79,7 +79,7 @@ Material:
     - _Smoothness: 0.5
     - _Tiling: 1
     m_Colors:
-    - _Base_Color: {r: 0.48113197, g: 0.5292326, b: 1, a: 1}
+    - _Base_Color: {r: 0.41194963, g: 1, b: 0.7777371, a: 1}
     - _Emission_Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

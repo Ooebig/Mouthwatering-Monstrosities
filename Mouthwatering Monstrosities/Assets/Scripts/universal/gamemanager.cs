@@ -12,6 +12,9 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuClear;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuSkillTree;
+    [SerializeField] GameObject inventoryCooking;
+    [SerializeField] GameObject recipeCooking;
+    [SerializeField] GameObject playerInv;
     [SerializeField] TMP_Text timeLimit;
     [SerializeField] float remainingTime;
     [SerializeField] Image roomProgressBar;
@@ -83,6 +86,23 @@ public class gamemanager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+        else if (Input.GetKeyDown(KeyCode.C)) {
+            if (menuActive == null)
+            {
+                statePause();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                menuActive = inventoryCooking;
+                menuActive.SetActive(true);
+            }
+            else if (menuActive == inventoryCooking || recipeCooking)
+            {
+                stateUnpause();
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+
     }
 
     public void statePause()
@@ -150,4 +170,19 @@ public class gamemanager : MonoBehaviour
         timeLimit.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    public void cookSwitch() {
+        if (menuActive == recipeCooking)
+        {
+            menuActive.SetActive(false);
+            menuActive = inventoryCooking;
+            menuActive.SetActive(true);
+        }
+        else if (menuActive == inventoryCooking)
+        {
+            menuActive.SetActive(false);
+            menuActive = recipeCooking;
+            menuActive.SetActive(true);
+        }
+    
+    }
 }
