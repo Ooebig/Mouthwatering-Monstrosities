@@ -97,6 +97,9 @@ public class Enemies : MonoBehaviour, IDamage
                 break;
 
             case enemyTier.final:
+                
+                if( UnityEngine.Random.value < 0.1)
+
 
                 break;
 
