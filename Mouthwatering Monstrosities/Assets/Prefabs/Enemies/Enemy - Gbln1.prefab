@@ -143,13 +143,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4030827117224737122}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: 0, w: 0.0000005960464}
-  m_LocalPosition: {x: 0.5100059, y: 0.10678665, z: 0.8335364}
+  m_LocalRotation: {x: -0.9651527, y: -0.0014373831, z: -0.00016080264, w: -0.2616837}
+  m_LocalPosition: {x: -0.56, y: 0.26, z: 0.94}
   m_LocalScale: {x: 0.2, y: 0.26666668, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2985470075523154620}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 149.66, y: -360.07098, z: -0.19000244}
 --- !u!33 &8909776442242317896
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -242,7 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 1
   team: 1
-  damageAmount: 10
+  damageAmount: 5
+  damageRate: 0
   rb: {fileID: 7608554602789334952}
   bulletSpeed: 0
   bulletDestroyTime: 0
@@ -402,6 +403,7 @@ GameObject:
   - component: {fileID: 7848271627551351263}
   - component: {fileID: -5493892446865635466}
   - component: {fileID: 6606332616009703921}
+  - component: {fileID: 8425126611090654299}
   m_Layer: 0
   m_Name: Enemy - Gbln1
   m_TagString: Untagged
@@ -521,16 +523,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemies
   model: {fileID: 9149136943174743762}
   agent: {fileID: -5493892446865635466}
-  HP: 10
+  weaponTrans: {fileID: 8879952384535558995}
+  HP: 25
   faceTargetSpeed: 0
   FOV: 0
   roamDist: 0
   roamDelay: 0
-  attackRange: 3
+  attackRange: 5
   attackDuration: 0.25
   type: 0
+  enmyTier: 0
   damageRate: 0.75
   weaponCollider: {fileID: 1917243113776355857}
+  swingSpeed: 1
 --- !u!195 &-5493892446865635466
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -574,3 +579,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8425126611090654299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8603148278238095119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a70a6a0112ef74ebc0181e550765c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootBag
+  dropsList:
+  - {fileID: 11400000, guid: 262465ebf5e0adb4ab16dfb777ab8ce3, type: 2}
