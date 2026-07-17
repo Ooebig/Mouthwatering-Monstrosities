@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949407684634ee540babe80e8d014218, type: 3}
   m_Name: DemogorgonTendrils
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
-  dropModel: {fileID: 1469116044188708899, guid: 53b25c94fcf414442812ea9807fabf52, type: 3}
+  dropModel: {fileID: 1469116044188708899, guid: 3a8fbab065e9b724fa94ab0c856758a7, type: 3}
   dropChance: 0
   itemName: Demogorgon Tendrils
+  itemIcon: {fileID: 0}

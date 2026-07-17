@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949407684634ee540babe80e8d014218, type: 3}
   m_Name: OgreBelly
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
-  dropModel: {fileID: 6250537738140844574, guid: fc2cf224d9dcfe44ea29feb9d4c1b1d1, type: 3}
-  dropChance: 0
+  dropModel: {fileID: 6250537738140844574, guid: 608e0bc0729c84a4c8231e738db060fd, type: 3}
+  dropChance: 100
   itemName: Ogre Belly
+  itemIcon: {fileID: 21300000, guid: 6f4ebb01a7ead614889e211ce4cfed51, type: 3}

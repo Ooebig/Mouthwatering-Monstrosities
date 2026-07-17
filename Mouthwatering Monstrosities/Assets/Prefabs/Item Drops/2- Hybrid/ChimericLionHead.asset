@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949407684634ee540babe80e8d014218, type: 3}
   m_Name: ChimericLionHead
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
-  dropModel: {fileID: 6250537738140844574, guid: fc2cf224d9dcfe44ea29feb9d4c1b1d1, type: 3}
+  dropModel: {fileID: 6250537738140844574, guid: a138b7206153211409a1fc2d4a2806f6, type: 3}
   dropChance: 0
   itemName: Chimeric Lion Head
+  itemIcon: {fileID: 0}

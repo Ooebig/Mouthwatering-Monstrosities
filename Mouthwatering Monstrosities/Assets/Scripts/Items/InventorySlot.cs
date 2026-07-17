@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using TMPro;
 
-
 public class InventorySlot : MonoBehaviour
 {
-    public TMP_Text itemNameText;
+    public Image itemIcon;
     public TMP_Text stackSizeText;
-
+    
     public void ClearSlot() {
-        itemNameText.text = string.Empty;
+        itemIcon.SetEnabled(false);
         stackSizeText.text = string.Empty;
     }
 
@@ -21,7 +20,8 @@ public class InventorySlot : MonoBehaviour
             ClearSlot();
             return;
         }
-        itemNameText.text = item.itemData.itemName;
+        itemIcon.SetEnabled(true);
+        itemIcon.sprite = item.itemData.itemIcon;
         stackSizeText.text = item.stackSize.ToString();
     }
 }
