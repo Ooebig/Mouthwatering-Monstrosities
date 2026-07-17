@@ -138,6 +138,7 @@ public class Enemies : MonoBehaviour, IDamage
             {
                 enemySpawner.EnemyDied(gameObject);
             }
+            GetComponent<LootBag>().InstantiateDrops(transform.position);
             Destroy(gameObject);
 
         }
@@ -276,5 +277,6 @@ public class Enemies : MonoBehaviour, IDamage
         weaponTrans.localRotation = startRotation;
         agent.isStopped = false;
     }
+
 
 }
