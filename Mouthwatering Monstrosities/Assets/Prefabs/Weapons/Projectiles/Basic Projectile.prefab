@@ -50,6 +50,7 @@ MonoBehaviour:
   type: 0
   team: 0
   damageAmount: 0
+  damageRate: 0
   rb: {fileID: 9029468074262976388}
   bulletSpeed: 30
   bulletDestroyTime: 5

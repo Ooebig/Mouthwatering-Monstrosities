@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour, IDamage
 
     [Header("Build")]
     [SerializeField] public CharacterController controller;
+    [SerializeField] public Camera playerCamera;
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject bladeZone;
     [SerializeField] GameObject bluntZone;
@@ -102,6 +103,26 @@ public class playerController : MonoBehaviour, IDamage
             attack();
         }
         selectWeapon();
+
+        if (Input.GetKey(KeyCode.E)) {
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            if (Physics.Raycast(ray, out hitInfo, 3))
+            {
+                Storage storage = hitInfo.collider.gameObject.GetComponent<Storage>();
+                if (storage != null)
+                {
+                    if (Input.GetKeyDown(KeyCode.E) && Storage.isStorageOpened)
+                    {
+                        Storage.CloseStorage(storage);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.E) && !Storage.isStorageOpened)
+                    {
+                        Storage.OpenStorage(storage);
+                    }
+                }
+            }
+        }
     }
 
     void attack()
