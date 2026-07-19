@@ -2285,7 +2285,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 469639014141769753}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.2905351
+  m_Size: 0.31410736
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2459,7 +2459,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2196566045357767643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.7094649}
+  m_AnchorMin: {x: 0, y: 0.68589264}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -8199,7 +8199,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1376.77}
+  m_SizeDelta: {x: 0, y: 1273.45}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6674069021180895011
 CanvasRenderer:
@@ -8251,24 +8251,20 @@ MonoBehaviour:
     Font from http://font.woowahan.com/yeonsung/
 
 
-    LOWPO: Low-Poly Goblin Pack
-    Free Sample by Standout 7 from the Unity Asset Store
+    Low Poly Melee & Ranged Medieval
+    Weapons by TUFFPOLYGON from the Unity Asset Store
 
 
-    Low Poly Melee & Ranged
-    Medieval Weapons by TUFFPOLYGON from the Unity Asset Store
+    Monster Drop Sprites
+    by Anthony Diaz-Stack
 
 
-    Monster Drop
-    Sprites by Anthony Diaz-Stack
+    Low-Poly Simple Nature Pack by JustCreate from the
+    Unity Asset Store
 
 
-    Low-Poly Simple Nature Pack by JustCreate
-    from the Unity Asset Store
-
-
-    Ultimate Low Poly Dungeon by Broken Vector from
-    the Unity Asset Store
+    Ultimate Low Poly Dungeon by Broken Vector from the Unity
+    Asset Store
 
 
     Grid Master by Decimate from the Unity Asset Store
@@ -9078,7 +9074,7 @@ MonoBehaviour:
   menuSkillTree: {fileID: 5372900726147245021}
   menuCredits: {fileID: 4314100824564407219}
   menuStorage: {fileID: 6884644406380313683}
-  recipeCooking: {fileID: 0}
+  menuCrafting: {fileID: 8804384195422162128}
   playerInv: {fileID: 2651326290768067037}
   timeLimit: {fileID: 5810223227581889292}
   remainingTime: 300
@@ -16345,6 +16341,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlot
   itemIcon: {fileID: 3282194999646008572}
   stackSizeText: {fileID: 0}
+--- !u!1 &8804384195422162128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4008980376556639173, guid: 90ade13ba0a086b429ee5023131b54b9, type: 3}
+  m_PrefabInstance: {fileID: 5588323572320313109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5746660089561504140
 PrefabInstance:
   m_ObjectHideFlags: 0

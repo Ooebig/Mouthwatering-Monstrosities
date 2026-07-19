@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 4524643324681910069}
   - component: {fileID: 2353867952729947698}
   - component: {fileID: 7683130574545820853}
+  - component: {fileID: 5912250080024798122}
   m_Layer: 0
   m_Name: CookPot
   m_TagString: Untagged
@@ -141,14 +142,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6207533835780530444}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.37, y: 0.5, z: 2.84}
   m_LocalScale: {x: 1.4184, y: 1.4184, z: 1.4184}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3917049319291408208}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4524643324681910069
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -227,3 +228,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9309203, y: 0.82133657, z: 0.6567141}
   m_Center: {x: 0.0007246733, y: 0.0000006407501, z: 0.334468}
+--- !u!114 &5912250080024798122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6207533835780530444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6a36cfa5c5a324a86a39fae7fab032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Crafting

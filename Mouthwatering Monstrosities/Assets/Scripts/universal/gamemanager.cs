@@ -14,7 +14,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuSkillTree;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuStorage;
-    [SerializeField] GameObject recipeCooking;
+    [SerializeField] GameObject menuCrafting;
     [SerializeField] GameObject playerInv;
     [SerializeField] TMP_Text timeLimit;
     [SerializeField] float remainingTime;
@@ -198,4 +198,22 @@ public class gamemanager : MonoBehaviour
         menuActive = null;
         menuActive.SetActive(false);
     }
+
+    public void OpenCraftingMenu()
+    {
+        statePause();
+        menuActive = menuCrafting;
+        menuActive.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void CloseCraftingMenu()
+    {
+
+        stateUnpause();
+        menuActive = null;
+        menuActive.SetActive(false);
+    }
+
 }

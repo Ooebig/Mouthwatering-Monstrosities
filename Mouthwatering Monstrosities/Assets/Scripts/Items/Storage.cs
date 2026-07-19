@@ -1,20 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Storage : MonoBehaviour
 {
     public string storageName;
     public int storageSize;
-    float timeScaleOrig;
     [HideInInspector] static public bool isStorageOpened;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     static public void OpenStorage(Storage storage)
     {

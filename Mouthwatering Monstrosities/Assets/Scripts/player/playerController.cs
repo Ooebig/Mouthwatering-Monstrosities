@@ -106,6 +106,7 @@ public class playerController : MonoBehaviour, IDamage
             if (Physics.Raycast(ray, out hitInfo, 3))
             {
                 Storage storage = hitInfo.collider.gameObject.GetComponent<Storage>();
+                Crafting crafting = hitInfo.collider.gameObject.GetComponent<Crafting>();
                 if (storage != null || Storage.isStorageOpened == true)
                 {
                     if (Input.GetKeyDown(KeyCode.E) && Storage.isStorageOpened)
@@ -117,6 +118,18 @@ public class playerController : MonoBehaviour, IDamage
                         Storage.OpenStorage(storage);
                     }
                 }
+                if (crafting != null || Crafting.isCraftingOpened == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.E) && Crafting.isCraftingOpened)
+                    {
+                        Crafting.CloseCrafting(crafting);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.E) && !Crafting.isCraftingOpened)
+                    {
+                        Crafting.OpenCrafting(crafting);
+                    }
+                }
+
             }
         }
     }
