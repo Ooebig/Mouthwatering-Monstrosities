@@ -68,6 +68,7 @@ public class Enemies : MonoBehaviour, IDamage
         faceTarget();
         if (distance <= attackRange && damageTimer >= damageRate)
         {
+            Debug.Log("Attack");
             attack();
         }
     }
@@ -97,17 +98,18 @@ public class Enemies : MonoBehaviour, IDamage
 
                 break;
 
-            case enemyTier.final:
+            case enemyTier.boss:
 
-                //if (UnityEngine.Random.value < 0.6)
-                //{
-                //    StartCoroutine(BasicAttack());
-                //}
-                //else
-                //{
-                //    StartCoroutine(BossSpecial());
-                //}
-
+                Debug.Log("Boss reached");
+                if (UnityEngine.Random.value < 0.1)
+                {
+                    StartCoroutine(BasicAttack());
+                }
+                else
+                {
+                    Debug.Log("Boss move");
+                    StartCoroutine(BossSpecial());
+                }
 
                 break;
 
@@ -162,7 +164,8 @@ public class Enemies : MonoBehaviour, IDamage
         Quaternion windup = startRotation * Quaternion.Euler(0, 0, -60);
         Quaternion swing = startRotation * Quaternion.Euler(0, 0, 80);
 
-        float t = 0;
+       
+            float t = 0;
         while (t < 1)
         {
             t += Time.deltaTime * swingSpeed;
@@ -183,12 +186,13 @@ public class Enemies : MonoBehaviour, IDamage
         weaponCollider.enabled = false;
 
         t = 0;
-        while (t < 1)
-        {
-            t += Time.deltaTime * swingSpeed;
-            weaponTrans.localRotation = Quaternion.Slerp(swing, startRotation, t);
-            yield return null;
-        }
+            while (t < 1)
+            {
+                t += Time.deltaTime * swingSpeed;
+                weaponTrans.localRotation = Quaternion.Slerp(swing, startRotation, t);
+                yield return null;
+            }
+        
 
         weaponTrans.localRotation = startRotation;
         agent.isStopped = false;
@@ -243,13 +247,13 @@ public class Enemies : MonoBehaviour, IDamage
         agent.isStopped = true;
         weaponCollider.enabled = true;
 
-        Quaternion windup = startRotation * Quaternion.Euler(0, 0, -60);
+        Quaternion windup = startRotation * Quaternion.Euler(0, 0, -90);
         Quaternion swing = startRotation * Quaternion.Euler(0, 0, 80);
 
         float t = 0;
         while (t < 1)
         {
-            t += Time.deltaTime * swingSpeed;
+            t += (Time.deltaTime * swingSpeed) / 2;
             weaponTrans.localRotation = Quaternion.Slerp(startRotation, windup, t);
             yield return null;
         }
@@ -275,6 +279,12 @@ public class Enemies : MonoBehaviour, IDamage
         }
 
         weaponTrans.localRotation = startRotation;
+
+
+        if (type == enemyType.goblinoid)
+        {
+            gamemanager.instance.playerScript.StartCoroutine(gamemanager.instance.playerScript.stun());
+        }
         agent.isStopped = false;
     }
 

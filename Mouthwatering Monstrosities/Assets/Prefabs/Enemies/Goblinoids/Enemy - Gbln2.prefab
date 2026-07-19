@@ -141,7 +141,7 @@ MonoBehaviour:
   attackDuration: 0.5
   type: 0
   enmyTier: 0
-  damageRate: 0.75
+  damageRate: 2.5
   weaponCollider: {fileID: 6857150083234229712}
   swingSpeed: 1
 --- !u!195 &-7354029424694174606
