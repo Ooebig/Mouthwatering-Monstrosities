@@ -5400,7 +5400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bb15ce8ac4c940ab4ba64503b0a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFader
-  image: {fileID: 599326714}
+  image: {fileID: 1670284645}
   sceneToLoad: 3Volcanic
   fadeDuration: 1
 --- !u!65 &377290627
@@ -5759,7 +5759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bb15ce8ac4c940ab4ba64503b0a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFader
-  image: {fileID: 599326714}
+  image: {fileID: 1670284645}
   sceneToLoad: 5Ethereal
   fadeDuration: 1
 --- !u!65 &421257457
@@ -6362,7 +6362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bb15ce8ac4c940ab4ba64503b0a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFader
-  image: {fileID: 599326714}
+  image: {fileID: 1670284645}
   sceneToLoad: 4Oublitte
   fadeDuration: 1
 --- !u!65 &522954854
@@ -6963,17 +6963,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &599326714 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7626666033511889343, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
-  m_PrefabInstance: {fileID: 1670284644}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &606959616
 GameObject:
   m_ObjectHideFlags: 0
@@ -8566,7 +8555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bb15ce8ac4c940ab4ba64503b0a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFader
-  image: {fileID: 599326714}
+  image: {fileID: 1670284645}
   sceneToLoad: 1Standard
   fadeDuration: 1
 --- !u!65 &784978871
@@ -15588,6 +15577,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+--- !u!114 &1670284645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 799110600682722284, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+  m_PrefabInstance: {fileID: 1670284644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &1683173837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19018,7 +19018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bb15ce8ac4c940ab4ba64503b0a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFader
-  image: {fileID: 599326714}
+  image: {fileID: 1670284645}
   sceneToLoad: 2Forest
   fadeDuration: 1
 --- !u!65 &2070993916

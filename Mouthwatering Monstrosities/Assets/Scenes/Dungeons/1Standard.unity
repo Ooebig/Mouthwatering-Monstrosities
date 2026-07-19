@@ -631,7 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomTransition
   destinationPoint: {fileID: 396627108}
-  fadeImage: {fileID: 1467804690}
+  fadeImage: {fileID: 312284867}
   fadeDuration: 1
 --- !u!65 &61028412
 BoxCollider:
@@ -3358,6 +3358,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+--- !u!114 &312284867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8740135028641280020, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+  m_PrefabInstance: {fileID: 312284866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &312284868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 799110600682722284, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
+  m_PrefabInstance: {fileID: 312284866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &321438363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10993,17 +11015,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d780173c250d334f80c9061373c8e4f, type: 3}
---- !u!114 &891987642 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7626666033511889343, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
-  m_PrefabInstance: {fileID: 312284866}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &903654471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16799,17 +16810,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3218aaed8ef5b6b42b5b1fe3ae5b6342, type: 3}
---- !u!114 &1467804690 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6400365194827382768, guid: 509c5daf874cc32469fa0c594d00d3d8, type: 3}
-  m_PrefabInstance: {fileID: 312284866}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &1471096940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17852,7 +17852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bb15ce8ac4c940ab4ba64503b0a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFader
-  image: {fileID: 891987642}
+  image: {fileID: 312284868}
   sceneToLoad: Kitchen
   fadeDuration: 1
 --- !u!65 &1597580666
@@ -19914,7 +19914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomTransition
   destinationPoint: {fileID: 1320411716}
-  fadeImage: {fileID: 1467804690}
+  fadeImage: {fileID: 312284867}
   fadeDuration: 1
 --- !u!65 &1748639007
 BoxCollider:
