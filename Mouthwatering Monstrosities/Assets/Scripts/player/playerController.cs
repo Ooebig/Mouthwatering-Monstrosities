@@ -106,7 +106,7 @@ public class playerController : MonoBehaviour, IDamage
             if (Physics.Raycast(ray, out hitInfo, 3))
             {
                 Storage storage = hitInfo.collider.gameObject.GetComponent<Storage>();
-                if (storage != null)
+                if (storage != null || Storage.isStorageOpened == true)
                 {
                     if (Input.GetKeyDown(KeyCode.E) && Storage.isStorageOpened)
                     {

@@ -13,7 +13,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuSkillTree;
     [SerializeField] GameObject menuCredits;
-    [SerializeField] GameObject inventoryCooking;
+    [SerializeField] GameObject menuStorage;
     [SerializeField] GameObject recipeCooking;
     [SerializeField] GameObject playerInv;
     [SerializeField] TMP_Text timeLimit;
@@ -171,22 +171,6 @@ public class gamemanager : MonoBehaviour
         timeLimit.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    public void CookSwitch() {
-        if (menuActive == recipeCooking)
-        {
-            menuActive.SetActive(false);
-            menuActive = inventoryCooking;
-            menuActive.SetActive(true);
-        }
-        else if (menuActive == inventoryCooking)
-        {
-            menuActive.SetActive(false);
-            menuActive = recipeCooking;
-            menuActive.SetActive(true);
-        }
-    
-    }
-
     public void OpenCredits()
     {
         menuActive.SetActive(false);
@@ -198,5 +182,20 @@ public class gamemanager : MonoBehaviour
         menuActive.SetActive(false);
         menuActive = menuPause;
         menuActive.SetActive(true);
+    }
+
+    public void OpenStorageMenu() {
+        statePause();
+        menuActive = menuStorage;
+        menuActive.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void CloseStorageMenu() {
+
+        stateUnpause();
+        menuActive = null;
+        menuActive.SetActive(false);
     }
 }
