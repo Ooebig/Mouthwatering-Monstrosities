@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GremlinLeg
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
   dropModel: {fileID: 693499632968240319, guid: 75a5b47ce636cf2499f69928aa63724c, type: 3}
-  dropChance: 100
+  dropChance: 80
   itemName: Gremlin Leg
   itemIcon: {fileID: 21300000, guid: 69026de147dbc164882b856620d985f1, type: 3}

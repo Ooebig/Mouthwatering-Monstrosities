@@ -367,7 +367,7 @@ MonoBehaviour:
   HP: 25
   faceTargetSpeed: 0
   attackRange: 5
-  attackDuration: 0.25
+  attackDuration: 1
   type: 0
   enmyTier: 0
   damageRate: 0.75
