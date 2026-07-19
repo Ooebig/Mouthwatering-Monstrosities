@@ -32,11 +32,14 @@ public class Enemies : MonoBehaviour, IDamage
     [SerializeField] float damageRate;
     [SerializeField] Collider weaponCollider;
     [SerializeField] float swingSpeed;
+    [SerializeField] GameObject fireball;
+    [SerializeField] Transform firePoint;
 
-    [Header("Griffin Stats")]
+    [Header("Flying Stats")]
     [SerializeField] float riseHeight = 6f;
     [SerializeField] float riseSpeed = 8f;
     [SerializeField] float diveSpeed = 18f;
+    [SerializeField] float downSpeed = 9f;
     [SerializeField] float hoverTime = 0.4f;
 
     float MaxHp;
@@ -117,15 +120,21 @@ public class Enemies : MonoBehaviour, IDamage
 
             case enemyTier.boss:
 
-                Debug.Log("Boss reached");
+               
                 if (UnityEngine.Random.value < 0.6)
                 {
                     StartCoroutine(BasicAttack());
                 }
                 else
                 {
-                    Debug.Log("Boss move");
-                    StartCoroutine(BossSpecial());
+                    if (type == enemyType.hybrid)
+                    {
+                        StartCoroutine(ChimeraSpecial());
+                    }
+                    else
+                    {
+                        StartCoroutine(BossSpecial());
+                    }
                 }
 
                 break;
@@ -307,7 +316,6 @@ public class Enemies : MonoBehaviour, IDamage
 
     IEnumerator GriffinSpecial()
     {
-        Debug.Log("Starting griffin");
         isAttacking = true;
         agent.isStopped = true;
         agent.updatePosition = false;
@@ -318,7 +326,7 @@ public class Enemies : MonoBehaviour, IDamage
 
         while (Vector3.Distance(transform.position, airPos) > 0.1f)
         {
-            Debug.Log("Flying up");
+            
             transform.position = Vector3.MoveTowards(transform.position,airPos, riseSpeed * Time.deltaTime);
 
             yield return null;
@@ -336,6 +344,57 @@ public class Enemies : MonoBehaviour, IDamage
 
             transform.rotation = Quaternion.LookRotation(dir);
             transform.position += dir * diveSpeed * Time.deltaTime;
+
+            yield return null;
+        }
+
+        weaponCollider.enabled = false;
+        agent.Warp(transform.position);
+        agent.updatePosition = true;
+        agent.updateRotation = true;
+        isAttacking = false;
+        agent.isStopped = false;
+    }
+
+    IEnumerator ChimeraSpecial()
+    {
+        isAttacking = true;
+        agent.isStopped = true;
+        agent.updatePosition = false;
+        agent.updateRotation = false;
+
+        Vector3 startPos = transform.position;
+        Vector3 airPos = startPos + Vector3.up * riseHeight;
+
+        while (Vector3.Distance(transform.position, airPos) > 0.1f)
+        {
+
+            transform.position = Vector3.MoveTowards(transform.position, airPos, riseSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(hoverTime);
+
+        Vector3 dir = gamemanager.instance.player.transform.position - transform.position;
+        dir.y = 0;
+
+        if (dir != Vector3.zero)
+            transform.rotation = Quaternion.LookRotation(dir);
+
+        yield return new WaitForSeconds(hoverTime);
+
+
+        Instantiate(fireball,firePoint.position,Quaternion.LookRotation(dir));
+
+        yield return new WaitForSeconds(0.5f);
+
+        while (Vector3.Distance(transform.position, startPos) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                startPos,
+                downSpeed * Time.deltaTime);
 
             yield return null;
         }

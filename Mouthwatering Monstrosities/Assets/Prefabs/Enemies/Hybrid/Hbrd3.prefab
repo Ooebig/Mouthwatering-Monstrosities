@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 5287014181333345543}
   - component: {fileID: 5753857075213808164}
   - component: {fileID: 6946858941180955121}
+  - component: {fileID: -3145100942315538249}
   m_Layer: 0
   m_Name: Hbrd3
   m_TagString: Untagged
@@ -371,6 +372,13 @@ MonoBehaviour:
   damageRate: 0.5
   weaponCollider: {fileID: 9174432774649658410}
   swingSpeed: 1
+  fireball: {fileID: 0}
+  firePoint: {fileID: 0}
+  riseHeight: 6
+  riseSpeed: 8
+  diveSpeed: 18
+  downSpeed: 9
+  hoverTime: 0.4
 --- !u!195 &6946858941180955121
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -393,6 +401,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-3145100942315538249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040140559643315490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a70a6a0112ef74ebc0181e550765c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootBag
+  dropsList:
+  - {fileID: 11400000, guid: 0109b38ead569254ab5b851915a9d649, type: 2}
 --- !u!1001 &1903345971548128581
 PrefabInstance:
   m_ObjectHideFlags: 0
