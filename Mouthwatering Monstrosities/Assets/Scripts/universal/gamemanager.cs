@@ -78,6 +78,7 @@ public class gamemanager : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 menuActive.SetActive(true);
+                menuSkillTree.GetComponent<SkillTree>().OpenTree();
             }
             else if (menuActive == menuSkillTree)
             {

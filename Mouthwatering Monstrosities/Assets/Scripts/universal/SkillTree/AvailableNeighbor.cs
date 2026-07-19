@@ -11,7 +11,7 @@ public class AvailableNeighbor : MonoBehaviour
 
     public void Start()
     {
-        if (!gameObject.GetComponent<UpgradeInfo>().isPurchased && gameObject.GetComponent<UpgradeInfo>().upgradeType != UpgradeInfo.UpgradeType.NA)
+        if (!gameObject.GetComponent<UpgradeInfo>().isPurchased && !gameObject.GetComponent<UpgradeInfo>().isAvailable)
         {
             gameObject.SetActive(false);
         }

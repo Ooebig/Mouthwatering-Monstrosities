@@ -23,8 +23,8 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField, Range(0, 50)] public float speed = 10;
     [SerializeField, Range(1.1f, 3f)] public float sprintMod = 1.5f;
     [SerializeField, Range(25f, 250f)] public float HP = 100f;
-    [SerializeField] int jumpSpeed;
-    [SerializeField] int jumpMax;
+    [SerializeField] public int jumpSpeed;
+    [SerializeField] public int jumpMax;
     [SerializeField] public int gravity;
     int lookSens = 30;
 
@@ -33,10 +33,10 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] weapon blunt;
     [SerializeField] weapon ranged;
     [SerializeField, Range(0.1f, 10f)] float switchDelay = 1f;
-    weapon[] weaponList;
+    public weapon[] weaponList;
     weapon activeWeapon;
     int activeWeaponNum;
-    float attackRate;
+    public float attackRate;
 
     [Header("Buffs/Temporary")]
     public float tempHP = 0;

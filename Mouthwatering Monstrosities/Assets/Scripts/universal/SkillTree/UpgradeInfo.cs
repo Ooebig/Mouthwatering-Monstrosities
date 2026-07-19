@@ -8,6 +8,7 @@ public class UpgradeInfo : MonoBehaviour
 
 
     [SerializeField] public UpgradeType upgradeType;
+    [SerializeField] public bool isAvailable;
 
     public bool isPurchased;
     public enum UpgradeType
@@ -16,8 +17,9 @@ public class UpgradeInfo : MonoBehaviour
         Damage,
         Speed,
         AttackSpeed,
-        CritChance,
-        CritDamage,
+        JumpSpeed,
+        JumpHeight,
+
         NA
     }
 }
