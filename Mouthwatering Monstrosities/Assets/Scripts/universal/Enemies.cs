@@ -238,7 +238,6 @@ public class Enemies : MonoBehaviour, IDamage
         agent.isStopped = false;
     }
 
-
     IEnumerator BossSpecial()
     {
         agent.isStopped = true;
