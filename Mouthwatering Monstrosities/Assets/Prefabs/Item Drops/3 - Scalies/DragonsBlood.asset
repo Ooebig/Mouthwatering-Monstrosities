@@ -15,4 +15,4 @@ MonoBehaviour:
   dropModel: {fileID: 6250537738140844574, guid: 847308a930bda054c94f214e35d9dd77, type: 3}
   dropChance: 0
   itemName: Dragons Blood
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: c8adf313982f8e94eb960b01bb4f3ce3, type: 3}

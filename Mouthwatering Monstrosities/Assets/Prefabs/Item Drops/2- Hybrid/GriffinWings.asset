@@ -15,4 +15,4 @@ MonoBehaviour:
   dropModel: {fileID: 1469116044188708899, guid: eb0046114d0398f43a23da2b68c2e7dd, type: 3}
   dropChance: 0
   itemName: Griffin Wings
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: e8464bb2c99279c49a582a9d0751e312, type: 3}

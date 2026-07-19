@@ -15,4 +15,4 @@ MonoBehaviour:
   dropModel: {fileID: 693499632968240319, guid: 679866cf503d95f4686ffcf860dda625, type: 3}
   dropChance: 0
   itemName: Aarokocra Poultry
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: b7bdbe33ade23ef4aa38ca443ccc5795, type: 3}

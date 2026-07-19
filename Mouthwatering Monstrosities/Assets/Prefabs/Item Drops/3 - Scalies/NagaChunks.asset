@@ -15,4 +15,4 @@ MonoBehaviour:
   dropModel: {fileID: 693499632968240319, guid: b93d21cba674dbc40b7896349377128d, type: 3}
   dropChance: 0
   itemName: Naga Chunks
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d1ec0bb38a96a6648a9a6eb9efffe448, type: 3}

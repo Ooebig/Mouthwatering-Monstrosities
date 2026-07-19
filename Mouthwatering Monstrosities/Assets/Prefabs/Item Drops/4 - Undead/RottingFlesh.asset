@@ -15,4 +15,4 @@ MonoBehaviour:
   dropModel: {fileID: 693499632968240319, guid: b4247d38a0c86794aa75fed496695059, type: 3}
   dropChance: 0
   itemName: RottingFlesh
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 27d39965725c66f469d66436b4231deb, type: 3}
