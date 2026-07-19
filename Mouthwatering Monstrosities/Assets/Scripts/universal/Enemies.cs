@@ -33,8 +33,15 @@ public class Enemies : MonoBehaviour, IDamage
     [SerializeField] Collider weaponCollider;
     [SerializeField] float swingSpeed;
 
+    [Header("Griffin Stats")]
+    [SerializeField] float riseHeight = 6f;
+    [SerializeField] float riseSpeed = 8f;
+    [SerializeField] float diveSpeed = 18f;
+    [SerializeField] float hoverTime = 0.4f;
+
     float MaxHp;
     Color colorOrig;
+    bool isAttacking;
 
     Vector3 playerDir;
     Vector3 startingPos;
@@ -61,14 +68,17 @@ public class Enemies : MonoBehaviour, IDamage
     void Update()
     {
         damageTimer += Time.deltaTime;
+        if (isAttacking)
+        {
+            return;
+        }
         agent.SetDestination(gamemanager.instance.player.transform.position);
         agent.stoppingDistance = 2;
 
         float distance = Vector3.Distance(transform.position, gamemanager.instance.player.transform.position);
         faceTarget();
         if (distance <= attackRange && damageTimer >= damageRate)
-        {
-            Debug.Log("Attack");
+        { 
             attack();
         }
     }
@@ -86,13 +96,20 @@ public class Enemies : MonoBehaviour, IDamage
 
             case enemyTier.miniboss:
 
-                if (UnityEngine.Random.value < 0.7)
+                if (UnityEngine.Random.value < 0.75)
                 {
                     StartCoroutine(BasicAttack());
                 }
                 else
                 {
-                    StartCoroutine(MBSpecialAttack());
+                    if (type == enemyType.hybrid)
+                    {
+                        StartCoroutine(GriffinSpecial());
+                    }
+                    else
+                    {
+                        StartCoroutine(MBSpecialAttack());
+                    }
                 }
 
 
@@ -101,7 +118,7 @@ public class Enemies : MonoBehaviour, IDamage
             case enemyTier.boss:
 
                 Debug.Log("Boss reached");
-                if (UnityEngine.Random.value < 0.1)
+                if (UnityEngine.Random.value < 0.6)
                 {
                     StartCoroutine(BasicAttack());
                 }
@@ -203,8 +220,8 @@ public class Enemies : MonoBehaviour, IDamage
         agent.isStopped = true;
         weaponCollider.enabled = true;
 
-        Quaternion windup = startRotation * Quaternion.Euler(0, -60, 0);
-        Quaternion swing = startRotation * Quaternion.Euler(0, 80, 0);
+        Quaternion windup = startRotation * Quaternion.Euler(-60, 0, 0);
+        Quaternion swing = startRotation * Quaternion.Euler(80, 0, 0);
 
         float t = 0;
         while (t < 1)
@@ -253,7 +270,7 @@ public class Enemies : MonoBehaviour, IDamage
         float t = 0;
         while (t < 1)
         {
-            t += (Time.deltaTime * swingSpeed) / 2;
+            t += Time.deltaTime * swingSpeed;
             weaponTrans.localRotation = Quaternion.Slerp(startRotation, windup, t);
             yield return null;
         }
@@ -288,5 +305,52 @@ public class Enemies : MonoBehaviour, IDamage
         agent.isStopped = false;
     }
 
+    IEnumerator GriffinSpecial()
+    {
+        Debug.Log("Starting griffin");
+        isAttacking = true;
+        agent.isStopped = true;
+        agent.updatePosition = false;
+        agent.updateRotation = false;
+
+        Vector3 startPos = transform.position;
+        Vector3 airPos = startPos + Vector3.up * riseHeight;
+
+        while (Vector3.Distance(transform.position, airPos) > 0.1f)
+        {
+            Debug.Log("Flying up");
+            transform.position = Vector3.MoveTowards(transform.position,airPos, riseSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(hoverTime);
+
+        Vector3 target = gamemanager.instance.player.transform.position;
+
+        weaponCollider.enabled = true;
+
+        while (Vector3.Distance(transform.position, target) > 0.2f)
+        {
+            Vector3 dir = (target - transform.position).normalized;
+
+            transform.rotation = Quaternion.LookRotation(dir);
+            transform.position += dir * diveSpeed * Time.deltaTime;
+
+            yield return null;
+        }
+
+        weaponCollider.enabled = false;
+        agent.Warp(transform.position);
+        agent.updatePosition = true;
+        agent.updateRotation = true;
+        isAttacking = false;
+        agent.isStopped = false;
+    }
 
 }
+
+
+
+
+
