@@ -12,6 +12,7 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject menuClear;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuSkillTree;
+    [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject inventoryCooking;
     [SerializeField] GameObject recipeCooking;
     [SerializeField] GameObject playerInv;
@@ -53,7 +54,7 @@ public class gamemanager : MonoBehaviour
     {
         countdownTimer();
 
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.P))
         {
             if (menuActive == null)
             {
@@ -86,22 +87,22 @@ public class gamemanager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.C)) {
-            if (menuActive == null)
-            {
-                statePause();
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                menuActive = inventoryCooking;
-                menuActive.SetActive(true);
-            }
-            else if (menuActive == inventoryCooking || recipeCooking)
-            {
-                stateUnpause();
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
+        //else if (Input.GetKeyDown(KeyCode.C)) {
+        //    if (menuActive == null)
+        //    {
+        //        statePause();
+        //        Cursor.visible = true;
+        //        Cursor.lockState = CursorLockMode.None;
+        //        menuActive = inventoryCooking;
+        //        menuActive.SetActive(true);
+        //    }
+        //    else if (menuActive == inventoryCooking || recipeCooking)
+        //    {
+        //        stateUnpause();
+        //        Cursor.visible = false;
+        //        Cursor.lockState = CursorLockMode.Locked;
+        //    }
+        //}
 
     }
 
@@ -170,7 +171,7 @@ public class gamemanager : MonoBehaviour
         timeLimit.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    public void cookSwitch() {
+    public void CookSwitch() {
         if (menuActive == recipeCooking)
         {
             menuActive.SetActive(false);
@@ -184,5 +185,18 @@ public class gamemanager : MonoBehaviour
             menuActive.SetActive(true);
         }
     
+    }
+
+    public void OpenCredits()
+    {
+        menuActive.SetActive(false);
+        menuActive = menuCredits;
+        menuActive.SetActive(true);
+    }
+
+    public void BackToMenu() {
+        menuActive.SetActive(false);
+        menuActive = menuPause;
+        menuActive.SetActive(true);
     }
 }

@@ -1,9 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public class playerController : MonoBehaviour, IDamage
 {
@@ -27,13 +23,13 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
     [SerializeField] public int gravity;
-    int lookSens = 30;
+    //int lookSens = 30;
 
     [Header("Enabled Weapons")]
     [SerializeField] weapon blade;
     [SerializeField] weapon blunt;
     [SerializeField] weapon ranged;
-    [SerializeField, Range(0.1f, 10f)] float switchDelay = 1f;
+    //[SerializeField, Range(0.1f, 10f)] float switchDelay = 1f;
     weapon[] weaponList;
     weapon activeWeapon;
     int activeWeaponNum;
@@ -48,7 +44,7 @@ public class playerController : MonoBehaviour, IDamage
     public Vector3 playerVel;
     float attackTimer;
     public float originalHP;
-    bool isSprinting = false;
+    //bool isSprinting = false;
     int jumpCount;
     public int activeWebs = 0;
     public int maxWebs = 3;
@@ -165,12 +161,12 @@ public class playerController : MonoBehaviour, IDamage
     {
         if (Input.GetButtonDown("Sprint"))
         {
-            isSprinting = true;
+            //isSprinting = true;
             speed *= sprintMod;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
-            isSprinting = false;
+            //isSprinting = false;
             speed /= sprintMod;
         }
     }
