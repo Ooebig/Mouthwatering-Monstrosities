@@ -1,15 +1,12 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public class playerController : MonoBehaviour, IDamage
 {
 
     [Header("Build")]
     [SerializeField] public CharacterController controller;
+    [SerializeField] public Camera playerCamera;
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject bladeZone;
     [SerializeField] GameObject bluntZone;
@@ -26,13 +23,13 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpMax;
     [SerializeField] public int gravity;
-    int lookSens = 30;
+    //int lookSens = 30;
 
     [Header("Enabled Weapons")]
     [SerializeField] weapon blade;
     [SerializeField] weapon blunt;
     [SerializeField] weapon ranged;
-    [SerializeField, Range(0.1f, 10f)] float switchDelay = 1f;
+    //[SerializeField, Range(0.1f, 10f)] float switchDelay = 1f;
     weapon[] weaponList;
     weapon activeWeapon;
     int activeWeaponNum;
@@ -47,7 +44,7 @@ public class playerController : MonoBehaviour, IDamage
     public Vector3 playerVel;
     float attackTimer;
     public float originalHP;
-    bool isSprinting = false;
+    //bool isSprinting = false;
     int jumpCount;
     public int activeWebs = 0;
     public int maxWebs = 3;
@@ -102,6 +99,39 @@ public class playerController : MonoBehaviour, IDamage
             attack();
         }
         selectWeapon();
+
+        if (Input.GetKey(KeyCode.E)) {
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            if (Physics.Raycast(ray, out hitInfo, 3))
+            {
+                Storage storage = hitInfo.collider.gameObject.GetComponent<Storage>();
+                Crafting crafting = hitInfo.collider.gameObject.GetComponent<Crafting>();
+                if (storage != null || Storage.isStorageOpened == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.E) && Storage.isStorageOpened)
+                    {
+                        Storage.CloseStorage(storage);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.E) && !Storage.isStorageOpened)
+                    {
+                        Storage.OpenStorage(storage);
+                    }
+                }
+                if (crafting != null || Crafting.isCraftingOpened == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.E) && Crafting.isCraftingOpened)
+                    {
+                        Crafting.CloseCrafting(crafting);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.E) && !Crafting.isCraftingOpened)
+                    {
+                        Crafting.OpenCrafting(crafting);
+                    }
+                }
+
+            }
+        }
     }
 
     void attack()
@@ -144,12 +174,12 @@ public class playerController : MonoBehaviour, IDamage
     {
         if (Input.GetButtonDown("Sprint"))
         {
-            isSprinting = true;
+            //isSprinting = true;
             speed *= sprintMod;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
-            isSprinting = false;
+            //isSprinting = false;
             speed /= sprintMod;
         }
     }

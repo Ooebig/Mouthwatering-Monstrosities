@@ -15,4 +15,4 @@ MonoBehaviour:
   dropModel: {fileID: 1469116044188708899, guid: 07346ef59000c9840a705de2e911867c, type: 3}
   dropChance: 100
   itemName: Orc Jowl
-  itemIcon: {fileID: 21300000, guid: 19c036ead2e6e7643b551d01551059f7, type: 3}
+  itemIcon: {fileID: 21300000, guid: fa2bac23f576d3e4297b2f60d31f6ecc, type: 3}

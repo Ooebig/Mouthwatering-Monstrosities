@@ -1,6 +1,4 @@
-using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System;
 
@@ -13,7 +11,6 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Invoked");
         Collectible.OnCollected += Add;
     }
 

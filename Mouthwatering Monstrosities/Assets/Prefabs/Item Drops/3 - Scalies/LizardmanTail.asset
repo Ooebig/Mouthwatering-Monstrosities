@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949407684634ee540babe80e8d014218, type: 3}
   m_Name: LizardmanTail
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
-  dropModel: {fileID: 693499632968240319, guid: e9039e5f78b472e438e1c4a203d45d92, type: 3}
+  dropModel: {fileID: 693499632968240319, guid: ce86ec67182ec9945b651f6eb44b7d96, type: 3}
   dropChance: 0
   itemName: Lizardman Tail
+  itemIcon: {fileID: 21300000, guid: b4a3a49b83b5ed2468a8f6ec58b10888, type: 3}

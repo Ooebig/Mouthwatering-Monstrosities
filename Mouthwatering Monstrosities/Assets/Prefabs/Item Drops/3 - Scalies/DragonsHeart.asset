@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949407684634ee540babe80e8d014218, type: 3}
   m_Name: DragonsHeart
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
-  dropModel: {fileID: 0}
+  dropModel: {fileID: 6250537738140844574, guid: 17681560cd796da439d85ccc56d37555, type: 3}
   dropChance: 0
   itemName: Dragons Heart
+  itemIcon: {fileID: 21300000, guid: fad0ce5257efeef4f8bd7bbb93c4b2d6, type: 3}

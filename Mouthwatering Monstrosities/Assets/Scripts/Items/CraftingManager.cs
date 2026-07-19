@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CraftingManager : MonoBehaviour
 {
     private InventorySlot currentSlot;
-    //public Image customCursor;
+    public Image customCursor;
 
     public InventorySlot[] craftingSlots;
 
@@ -24,7 +24,7 @@ public class CraftingManager : MonoBehaviour
                     }
                 }
                 nearestSlot.gameObject.SetActive(true);
-                //BETA -- nearestSlot.GetComponent<Image>().sprite = currentSlot.GetComponent
+                //nearestSlot.GetComponent<Image>().sprite = currentSlot.GetComponent
                 nearestSlot = currentSlot;
                 //currentSlot.stackSizeText = ((int.Parse(currentSlot.stackSizeText)) - 1).ToString();
                 currentSlot = null;
