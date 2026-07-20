@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WerewolfSnout
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
   dropModel: {fileID: 693499632968240319, guid: 27b5a08edb7bff44eb4f8a06c664fa64, type: 3}
-  dropChance: 0
+  dropChance: 80
   itemName: Werewolf Snout
   itemIcon: {fileID: 21300000, guid: 6a1b6a49d0c9e394388027652102fb95, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ChimericGoatMutton
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
   dropModel: {fileID: 6250537738140844574, guid: 8f7091baceb1cf74ab99cbbfc786a6d9, type: 3}
-  dropChance: 0
+  dropChance: 30
   itemName: Chimeric Goat Mutton
   itemIcon: {fileID: 21300000, guid: b05fc8ecb62d456409ae330282feeb97, type: 3}

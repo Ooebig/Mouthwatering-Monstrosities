@@ -142,6 +142,8 @@ public class gamemanager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public float GetDifficultyMult()
@@ -193,7 +195,6 @@ public class gamemanager : MonoBehaviour
     }
 
     public void CloseStorageMenu() {
-
         stateUnpause();
         menuActive = null;
         menuActive.SetActive(false);
@@ -210,7 +211,6 @@ public class gamemanager : MonoBehaviour
 
     public void CloseCraftingMenu()
     {
-
         stateUnpause();
         menuActive = null;
         menuActive.SetActive(false);

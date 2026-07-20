@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ChimericSnakeVenom
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
   dropModel: {fileID: 6250537738140844574, guid: 0ab42e4a0933a8f4a9e2a866735c290c, type: 3}
-  dropChance: 0
+  dropChance: 20
   itemName: Chimeric Snake Venom
   itemIcon: {fileID: 21300000, guid: 37795de0d6d048c4a9d01a57b600e731, type: 3}

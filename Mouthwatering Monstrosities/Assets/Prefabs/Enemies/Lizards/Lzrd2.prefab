@@ -124,6 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 579162067681720992}
   - component: {fileID: 2400152947027321396}
+  - component: {fileID: -5413415787937711148}
   - component: {fileID: 4764884400253152835}
   - component: {fileID: 73921450308249404}
   - component: {fileID: 1922783948664679792}
@@ -161,6 +162,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3903800662091092869}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-5413415787937711148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3903800662091092869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a70a6a0112ef74ebc0181e550765c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootBag
+  dropsList:
+  - {fileID: 11400000, guid: 0c365cad9f54bbc43bb4fbf55455bd3a, type: 2}
 --- !u!23 &4764884400253152835
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -257,6 +272,13 @@ MonoBehaviour:
   damageRate: 1
   weaponCollider: {fileID: 8383353602512258932}
   swingSpeed: 1
+  fireball: {fileID: 0}
+  firePoint: {fileID: 0}
+  riseHeight: 6
+  riseSpeed: 8
+  diveSpeed: 18
+  downSpeed: 9
+  hoverTime: 0.4
 --- !u!195 &7651921888767672919
 NavMeshAgent:
   m_ObjectHideFlags: 0
