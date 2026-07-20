@@ -23,10 +23,8 @@ public class SkillTree : MonoBehaviour
     public void OpenTree()
     {
         tree[0].SetActive(true);
-    }
-    private void Update()
-    {
-        if(level > 1) {
+        if (level > 1)
+        {
             Arrows.SetActive(true);
         }
     }

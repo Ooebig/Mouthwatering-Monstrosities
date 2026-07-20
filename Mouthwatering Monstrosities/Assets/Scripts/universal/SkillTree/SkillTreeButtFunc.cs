@@ -41,7 +41,9 @@ public class SkillTreeButtonFunctions : MonoBehaviour
                 break;
 
             case UpgradeInfo.UpgradeType.Damage:
-                for(int i = 0; i < gamemanager.instance.playerScript.weaponList.Length; i++)
+                //player must have weapons to upgrade
+                if(gamemanager.instance.playerScript.weaponList == null) return;
+                for (int i = 0; i < gamemanager.instance.playerScript.weaponList.Length; i++)
                 {
                     gamemanager.instance.playerScript.weaponList[i].damage += upgradeInfo.AmountToIncrease;
                 }
