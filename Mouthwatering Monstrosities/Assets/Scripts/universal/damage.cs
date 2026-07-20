@@ -1,19 +1,20 @@
-using NUnit.Framework;
+ using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
 
 public class damage : MonoBehaviour
 {
-    public enum Type { Projectile, Melee, DOT }
+    public enum Type { Projectile, DOT }
 
     [SerializeField] public Type type;
+    [SerializeField] public bool autoDelete = true;
     [SerializeField] public int team;
     [SerializeField] public float damageAmount;
     [SerializeField] float damageRate;
 
     [SerializeField] public Rigidbody rb;
     [SerializeField] public float bulletSpeed;
-    [SerializeField] public int bulletDestroyTime;
+    [SerializeField] public float bulletDestroyTime;
 
     bool isDamaging;
 
@@ -22,8 +23,17 @@ public class damage : MonoBehaviour
         if (type == Type.Projectile)
         {
             rb.linearVelocity = transform.forward * bulletSpeed;
-            Destroy(gameObject, bulletDestroyTime);
+            if (autoDelete)
+            {
+                Destroy(gameObject, bulletDestroyTime);
+            }
+
         }
+    }
+
+    public void destroyobject(float time)
+    {
+        Destroy(gameObject, time);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,6 +72,8 @@ public class damage : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 
     private void OnTriggerStay(Collider other)
     {

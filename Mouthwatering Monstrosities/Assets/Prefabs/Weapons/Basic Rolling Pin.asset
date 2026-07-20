@@ -16,4 +16,6 @@ MonoBehaviour:
   damage: 30
   range: 1.5
   attackSpeed: 1.5
-  projectile: {fileID: 0}
+  model: {fileID: 9183256039544058902, guid: 912012847d1886140b4adde810fce7e4, type: 3}
+  projectile: {fileID: 5542346154053770592, guid: 27d0f7d9033ca2d459ebb21eb58b74d1, type: 3}
+  icon: {fileID: 21300000, guid: 51fe9fefb30a1264088e3043149c4c9e, type: 3}

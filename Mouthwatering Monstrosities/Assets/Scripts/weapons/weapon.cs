@@ -12,6 +12,7 @@ public class weapon : ScriptableObject
     [SerializeField] public float attackSpeed;
     [SerializeField] public Renderer model;
     [SerializeField] public GameObject projectile;
+    [SerializeField] public Sprite icon;
     
 
 

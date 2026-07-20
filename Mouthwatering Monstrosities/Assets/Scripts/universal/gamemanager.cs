@@ -4,9 +4,12 @@ using TMPro;
 
 public class gamemanager : MonoBehaviour
 {
+    //Enums
+    public enum diffucltySetting { Easy, Normal, Hard, Expert }
     public enum  levelType { kitchen, dungeon }
     public static gamemanager instance;
 
+    [Header("UI Elements")]
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuClear;
@@ -15,17 +18,31 @@ public class gamemanager : MonoBehaviour
     [SerializeField] GameObject inventoryCooking;
     [SerializeField] GameObject recipeCooking;
     [SerializeField] GameObject playerInv;
-    [SerializeField] TMP_Text timeLimit;
-    [SerializeField] float remainingTime;
-    [SerializeField] Image roomProgressBar;
-    [SerializeField] int roomGoalMax;
-    public int roomGoalCount;
-    public enum diffucltySetting {Easy, Normal, Hard, Expert}
-    public diffucltySetting currentDifficulty = diffucltySetting.Normal;
-
-    public Image playerHPBar;
     public GameObject playerDamageFlash;
-    public GameObject playerFallingFlash;
+    public GameObject playerFallingFlash;    
+
+    [Header("HUD Elements")]
+    [SerializeField] TMP_Text timeLimit;
+    [SerializeField] Image roomProgressBar;
+    [SerializeField] Image bladeWeaponIcon;
+    [SerializeField] Image bluntWeaponIcon;
+    [SerializeField] Image rangedWeaponIcon;
+    public Image playerHPBar;
+
+
+    [Header("Data Objects")]
+
+    [Header("Settings")]
+    public diffucltySetting currentDifficulty = diffucltySetting.Normal;
+    [SerializeField] float remainingTime;
+    [SerializeField] int roomGoalMax;
+    
+    
+
+    [Header("Automatic, Do Not Touch")]
+    public int roomGoalCount;
+    
+    
     public bool isPaused;
     public GameObject player;
     public playerController playerScript;
@@ -185,4 +202,44 @@ public class gamemanager : MonoBehaviour
         }
     
     }
+
+    public void updateWeaponIcons()
+    {
+
+        Sprite blade = playerScript.weaponList[0].icon;
+        Sprite blunt = playerScript.weaponList[1].icon;
+        Sprite ranged = playerScript.weaponList[2].icon;
+
+        if (blade != null)
+        {
+            bladeWeaponIcon.enabled = true;
+            bladeWeaponIcon.sprite = blade;
+        }
+        else
+        {
+            bladeWeaponIcon.enabled = false;
+        }
+
+        if (blunt != null)
+        {
+            bluntWeaponIcon.enabled = true;
+            bluntWeaponIcon.sprite = blunt;
+        }
+        else
+        {
+            bluntWeaponIcon.enabled = false;
+        }
+
+        if (ranged != null)
+        {
+            rangedWeaponIcon.enabled = true;
+            rangedWeaponIcon.sprite = ranged;
+        }
+        else
+        {
+            rangedWeaponIcon.enabled = false;
+        }
+
+    }
+
 }

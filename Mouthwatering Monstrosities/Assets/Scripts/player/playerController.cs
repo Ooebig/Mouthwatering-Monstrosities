@@ -11,8 +11,6 @@ public class playerController : MonoBehaviour, IDamage
     [Header("Build")]
     [SerializeField] public CharacterController controller;
     [SerializeField] GameObject playerModel;
-    [SerializeField] GameObject bladeZone;
-    [SerializeField] GameObject bluntZone;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform weaponPivot;
     [SerializeField] Renderer weaponModel;
@@ -20,12 +18,12 @@ public class playerController : MonoBehaviour, IDamage
     public int Team => team;
 
     [Header("Stats")]
-    [SerializeField, Range(0, 50)] public float speed = 10;
+    [SerializeField, Range(5, 50)] public float speed = 10;
     [SerializeField, Range(1.1f, 3f)] public float sprintMod = 1.5f;
     [SerializeField, Range(25f, 250f)] public float HP = 100f;
-    [SerializeField] int jumpSpeed;
-    [SerializeField] int jumpMax;
-    [SerializeField] public int gravity;
+    [SerializeField, Range(0, 3)] public int jumpMax = 1;
+    [SerializeField, Range(10f, 50f)] public float jumpSpeed = 30f;
+    [SerializeField, Range(10f, 50f)] public float gravity = 30f;
     int lookSens = 30;
 
     [Header("Enabled Weapons")]
@@ -33,10 +31,19 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] weapon blunt;
     [SerializeField] weapon ranged;
     [SerializeField, Range(0.1f, 10f)] float switchDelay = 1f;
-    weapon[] weaponList;
+    public weapon[] weaponList;
     weapon activeWeapon;
     int activeWeaponNum;
     float attackRate;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource audPlayer;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audStep;
+    [Range(0, 1)][SerializeField] float audStepVol;
 
     [Header("Buffs/Temporary")]
     public float tempHP = 0;
@@ -64,8 +71,8 @@ public class playerController : MonoBehaviour, IDamage
             activeWeapon = weaponList[i];
             activeWeaponNum = i;
         }
-        isStunned = false;  
-
+        isStunned = false;
+        changeWeaponModel();
     }
 
     // Update is called once per frame
@@ -106,31 +113,28 @@ public class playerController : MonoBehaviour, IDamage
 
     void attack()
     {
-       
-        if (activeWeaponNum == 0)
-        {
-            bladeZone.SetActive(true);
-            StartCoroutine(disableAttackZone(bladeZone));
-        }
-        else if (activeWeaponNum == 1)
-        {
-            bluntZone.SetActive(true);
-            StartCoroutine(disableAttackZone(bluntZone));
-        }
-        else if (activeWeaponNum == 2)
+
+        if (activeWeaponNum == 2)
         {
             GameObject bullet = Instantiate(activeWeapon.projectile, shootPos.position, shootPos.rotation);
             bullet.GetComponent<damage>().damageAmount = activeWeapon.damage;
             bullet.GetComponent<damage>().team = team;
         }
+        else
+        {
+            GameObject hitbox = Instantiate(activeWeapon.projectile, shootPos.position, transform.rotation);
+            hitbox.GetComponent<damage>().damageAmount = activeWeapon.damage;
+            Vector3 scale = hitbox.transform.localScale;
+            scale.x *= activeWeapon.range;
+            scale.z *= activeWeapon.range;
+            hitbox.transform.localScale = scale;
+            hitbox.GetComponent<damage>().team = team;
+            hitbox.GetComponent<damage>().destroyobject(hitbox.GetComponent<damage>().bulletDestroyTime);
+        }
         attackTimer = 0;
     }
 
-    IEnumerator disableAttackZone(GameObject zone)
-    {
-        yield return new WaitForSeconds(0.1f);
-        zone.SetActive(false);
-    }
+    
 
     void jump()
     {
@@ -168,7 +172,7 @@ public class playerController : MonoBehaviour, IDamage
                 activeWeaponNum = i;
 
             }
-            //weaponModel = activeWeapon.model;
+            changeWeaponModel();
             attackRate = activeWeapon.attackSpeed;
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
@@ -182,9 +186,19 @@ public class playerController : MonoBehaviour, IDamage
                 activeWeaponNum = i;
 
             }
-            //weaponModel = activeWeapon.model;
+            changeWeaponModel();
             attackRate = activeWeapon.attackSpeed;
         }
+    }
+
+    void changeWeaponModel()
+    {
+        MeshFilter sourceFilter = activeWeapon.model.GetComponent<MeshFilter>();
+        MeshRenderer sourceRenderer = activeWeapon.model.GetComponent<MeshRenderer>();
+        MeshFilter targetFilter = weaponModel.GetComponent<MeshFilter>();
+        MeshRenderer targetRenderer = weaponModel.GetComponent<MeshRenderer>();
+        targetFilter.sharedMesh = sourceFilter.sharedMesh;
+        targetRenderer.sharedMaterials = sourceRenderer.sharedMaterials;
     }
 
     public void takeDamage(float amount)
