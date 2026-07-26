@@ -547,7 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 1
   team: 1
-  damageAmount: 45
+  damageAmount: 25
   damageRate: 0.5
   rb: {fileID: 1036448397676019281}
   bulletSpeed: 0
