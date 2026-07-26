@@ -70,23 +70,23 @@ public class gamemanager : MonoBehaviour
                 stateUnpause();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (menuActive == null)
-            {
-                statePause();
-                menuActive = menuSkillTree;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                menuActive.SetActive(true);
-            }
-            else if (menuActive == menuSkillTree)
-            {
-                stateUnpause();
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
+        //else if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    if (menuActive == null)
+        //    {
+        //        statePause();
+        //        menuActive = menuSkillTree;
+        //        Cursor.visible = true;
+        //        Cursor.lockState = CursorLockMode.None;
+        //        menuActive.SetActive(true);
+        //    }
+        //    else if (menuActive == menuSkillTree)
+        //    {
+        //        stateUnpause();
+        //        Cursor.visible = false;
+        //        Cursor.lockState = CursorLockMode.Locked;
+        //    }
+        //}
         //else if (Input.GetKeyDown(KeyCode.C)) {
         //    if (menuActive == null)
         //    {
