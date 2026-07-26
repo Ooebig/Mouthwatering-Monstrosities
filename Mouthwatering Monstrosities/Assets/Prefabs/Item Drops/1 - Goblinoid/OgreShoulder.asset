@@ -15,4 +15,4 @@ MonoBehaviour:
   dropModel: {fileID: 6250537738140844574, guid: fc2cf224d9dcfe44ea29feb9d4c1b1d1, type: 3}
   dropChance: 35
   itemName: Ogre Shoulder
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 58d14e15d1ecf9e44ba9f31dc193698b, type: 3}

@@ -15,4 +15,4 @@ MonoBehaviour:
   dropModel: {fileID: 6250537738140844574, guid: fc2cf224d9dcfe44ea29feb9d4c1b1d1, type: 3}
   dropChance: 20
   itemName: Ogre Belly
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 6f4ebb01a7ead614889e211ce4cfed51, type: 3}

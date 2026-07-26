@@ -78,6 +78,7 @@ MonoBehaviour:
   objectToSpawn:
   - {fileID: 5490836999576051387, guid: 7338584842ef4a14fb6392ee2134c63d, type: 3}
   - {fileID: 2958991368765572527, guid: 6926d431b08b23f42b140e105f08cffd, type: 3}
+  - {fileID: 8040140559643315490, guid: 371878343fdcaa6439ec31e70e820326, type: 3}
   amountToSpawn: 0
   spawnRate: 0.5
   spawnDist: 25

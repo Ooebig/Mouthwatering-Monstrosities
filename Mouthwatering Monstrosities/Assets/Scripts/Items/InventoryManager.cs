@@ -1,11 +1,8 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Json;
 
 public class InventoryManager : MonoBehaviour
 {
-    
     private void OnEnable()
     {
         PlayerInventory.OnInventoryChange += DrawInventory;
@@ -45,4 +42,6 @@ public class InventoryManager : MonoBehaviour
         newSlotComponent.ClearSlot();
         inventorySlots.Add(newSlotComponent); 
     }
+
+    
 }

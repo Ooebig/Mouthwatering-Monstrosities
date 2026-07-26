@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949407684634ee540babe80e8d014218, type: 3}
   m_Name: CapturedSoul
   m_EditorClassIdentifier: Assembly-CSharp::itemDrops
-  dropModel: {fileID: 6250537738140844574, guid: fc2cf224d9dcfe44ea29feb9d4c1b1d1, type: 3}
+  dropModel: {fileID: 6250537738140844574, guid: bab33b21e7f1f3a4ca2d5880f6ddcfb4, type: 3}
   dropChance: 0
   itemName: Captured Soul
+  itemIcon: {fileID: 0}

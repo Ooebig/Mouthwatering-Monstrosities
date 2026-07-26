@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.Timeline;
-using UnityEditor.Build;
 using Unity.Mathematics;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
