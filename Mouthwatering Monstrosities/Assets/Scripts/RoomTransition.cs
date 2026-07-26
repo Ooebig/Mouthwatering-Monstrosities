@@ -14,17 +14,12 @@ public class RoomTransition : MonoBehaviour
     {
         if (!other.CompareTag("Player") || transitioning) return;
 
-        transitioning = true;
         StartCoroutine(Transition(other.transform));
     }
 
     private IEnumerator Transition(Transform player)
     {
-        playerController pc = player.GetComponent<playerController>();
-        CharacterController cc = player.GetComponent<CharacterController>();
-
-        if (pc != null)
-            pc.enabled = false;
+        transitioning = true;
 
         yield return StartCoroutine(FadeScreen(1));
 
@@ -34,26 +29,23 @@ public class RoomTransition : MonoBehaviour
 
             gamemanager.instance.playerSpawnPos.transform.position = targetPosition;
 
-            if (cc != null)
-                cc.enabled = false;
+            Rigidbody rb = player.GetComponent<Rigidbody>();
 
-            player.position = targetPosition;
-
-            if (pc != null)
-                pc.playerVel = Vector3.zero;
-
-            Physics.SyncTransforms();
-
-            if (cc != null)
-                cc.enabled = true;
+            if (rb != null)
+            {
+                rb.position = targetPosition;
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+            else
+            {
+                player.position = targetPosition;
+            }
         }
 
         yield return new WaitForSeconds(0.2f);
 
         yield return StartCoroutine(FadeScreen(0));
-
-        if (pc != null)
-            pc.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
 
