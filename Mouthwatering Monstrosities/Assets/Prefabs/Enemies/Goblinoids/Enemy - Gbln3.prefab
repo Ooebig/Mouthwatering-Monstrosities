@@ -372,6 +372,13 @@ MonoBehaviour:
   damageRate: 0.75
   weaponCollider: {fileID: 3768842097679979053}
   swingSpeed: 2
+  fireball: {fileID: 0}
+  firePoint: {fileID: 0}
+  riseHeight: 6
+  riseSpeed: 8
+  diveSpeed: 18
+  downSpeed: 9
+  hoverTime: 0.4
 --- !u!195 &1836662965411193589
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -381,7 +388,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3891017719419898676}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

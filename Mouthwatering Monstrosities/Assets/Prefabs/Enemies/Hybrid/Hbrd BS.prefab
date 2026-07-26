@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8345415368466757035}
   - component: {fileID: 7339038218237772083}
   m_Layer: 0
-  m_Name: HbrdBS
+  m_Name: Hbrd BS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2117819342182725020}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
