@@ -5,6 +5,7 @@ public class MainMenu : MonoBehaviour
     public void LoadKitchen()
     {
         SceneManager.LoadScene("Kitchen");
+        gamemanager.instance.stateUnpause();
     }
 
     public void quit()
