@@ -103,7 +103,7 @@ public class playerController : MonoBehaviour, IDamage
         if (Input.GetKey(KeyCode.E)) {
             Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo, 3))
+            if (Physics.Raycast(ray, out hitInfo, 5))
             {
                 Storage storage = hitInfo.collider.gameObject.GetComponent<Storage>();
                 Crafting crafting = hitInfo.collider.gameObject.GetComponent<Crafting>();
