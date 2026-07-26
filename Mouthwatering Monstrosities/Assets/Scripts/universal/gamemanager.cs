@@ -120,6 +120,7 @@ public class gamemanager : MonoBehaviour
         Cursor.visible = false;
         menuActive.SetActive(false);
         menuActive = null;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void updateGameGoal(int amount)
